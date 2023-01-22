@@ -1,0 +1,6 @@
+{
+    "provider": "andrewbaxter/stripe",
+    "version": "0.0.20",
+    "dest": "src/stripe",
+	"feature_gate": "Cargo.toml"
+}
