@@ -115,7 +115,7 @@ impl Invoice {
         &self.0.shared
     }
 
-    pub fn depends_on(self, dep: &impl Resource) -> Self {
+    pub fn depends_on(self, dep: &impl Dependable) -> Self {
         self.0.data.borrow_mut().depends_on.push(dep.extract_ref());
         self
     }
@@ -1254,6 +1254,12 @@ impl Resource for Invoice {
     }
 }
 
+impl Dependable for Invoice {
+    fn extract_ref(&self) -> String {
+        Resource::extract_ref(self)
+    }
+}
+
 impl ToListMappable for Invoice {
     type O = ListRef<InvoiceRef>;
 
@@ -1312,57 +1318,46 @@ impl BuildInvoice {
                 payment_settings_payment_method_options_acss_debit_mandate_options_transaction_type: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
+                ::default(),
                 payment_settings_payment_method_options_acss_debit_verification_method: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
-                payment_settings_payment_method_options_bancontact_preferred_language: core::default::Default::default(
-
-                ),
+                ::default(),
+                payment_settings_payment_method_options_bancontact_preferred_language: core
+                ::default
+                ::Default
+                ::default(),
                 payment_settings_payment_method_options_card_installments_enabled: core::default::Default::default(),
-                payment_settings_payment_method_options_card_installments_plan_count: core::default::Default::default(
-
-                ),
+                payment_settings_payment_method_options_card_installments_plan_count: core
+                ::default
+                ::Default
+                ::default(),
                 payment_settings_payment_method_options_card_installments_plan_interval: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
+                ::default(),
                 payment_settings_payment_method_options_card_installments_plan_type: core::default::Default::default(),
                 payment_settings_payment_method_options_card_request_three_d_secure: core::default::Default::default(),
                 payment_settings_payment_method_options_customer_balance_bank_transfer_eu_bank_transfer_country: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
+                ::default(),
                 payment_settings_payment_method_options_customer_balance_bank_transfer_type: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
-                payment_settings_payment_method_options_customer_balance_funding_type: core::default::Default::default(
-
-                ),
+                ::default(),
+                payment_settings_payment_method_options_customer_balance_funding_type: core
+                ::default
+                ::Default
+                ::default(),
                 payment_settings_payment_method_options_us_bank_account_financial_connections_permissions: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
+                ::default(),
                 payment_settings_payment_method_options_us_bank_account_verification_method: core
                 ::default
                 ::Default
-                ::default(
-
-                ),
+                ::default(),
                 payment_settings_payment_method_types: core::default::Default::default(),
                 pending_invoice_items_behavior: core::default::Default::default(),
                 rendering_options_amount_tax_display: core::default::Default::default(),

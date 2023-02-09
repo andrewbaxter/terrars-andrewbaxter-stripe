@@ -101,7 +101,7 @@ impl Customer {
         &self.0.shared
     }
 
-    pub fn depends_on(self, dep: &impl Resource) -> Self {
+    pub fn depends_on(self, dep: &impl Dependable) -> Self {
         self.0.data.borrow_mut().depends_on.push(dep.extract_ref());
         self
     }
@@ -852,6 +852,12 @@ impl Customer {
 impl Resource for Customer {
     fn extract_ref(&self) -> String {
         format!("{}.{}", self.0.extract_resource_type(), self.0.extract_tf_id())
+    }
+}
+
+impl Dependable for Customer {
+    fn extract_ref(&self) -> String {
+        Resource::extract_ref(self)
     }
 }
 
@@ -5086,45 +5092,37 @@ impl BuildCustomerSubscriptionsDataEl {
             payment_settings_payment_method_options_acss_debit_mandate_options_transaction_type: core
             ::default
             ::Default
-            ::default(
-
-            ),
+            ::default(),
             payment_settings_payment_method_options_acss_debit_verification_method: core::default::Default::default(),
             payment_settings_payment_method_options_bancontact_preferred_language: core::default::Default::default(),
             payment_settings_payment_method_options_card_mandate_options_amount: core::default::Default::default(),
-            payment_settings_payment_method_options_card_mandate_options_amount_type: core::default::Default::default(
-
-            ),
-            payment_settings_payment_method_options_card_mandate_options_description: core::default::Default::default(
-
-            ),
+            payment_settings_payment_method_options_card_mandate_options_amount_type: core
+            ::default
+            ::Default
+            ::default(),
+            payment_settings_payment_method_options_card_mandate_options_description: core
+            ::default
+            ::Default
+            ::default(),
             payment_settings_payment_method_options_card_network: core::default::Default::default(),
             payment_settings_payment_method_options_card_request_three_d_secure: core::default::Default::default(),
             payment_settings_payment_method_options_customer_balance_bank_transfer_eu_bank_transfer_country: core
             ::default
             ::Default
-            ::default(
-
-            ),
+            ::default(),
             payment_settings_payment_method_options_customer_balance_bank_transfer_type: core
             ::default
             ::Default
-            ::default(
-
-            ),
+            ::default(),
             payment_settings_payment_method_options_customer_balance_funding_type: core::default::Default::default(),
             payment_settings_payment_method_options_us_bank_account_financial_connections_permissions: core
             ::default
             ::Default
-            ::default(
-
-            ),
+            ::default(),
             payment_settings_payment_method_options_us_bank_account_verification_method: core
             ::default
             ::Default
-            ::default(
-
-            ),
+            ::default(),
             payment_settings_payment_method_types: core::default::Default::default(),
             payment_settings_save_default_payment_method: core::default::Default::default(),
             pending_invoice_item_interval_interval: core::default::Default::default(),
