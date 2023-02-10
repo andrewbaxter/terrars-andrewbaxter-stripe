@@ -271,7 +271,7 @@ impl ToListMappable for ShippingRate {
 
     fn do_map(self, base: String) -> Self::O {
         self.0.data.borrow_mut().for_each = Some(format!("${{{}}}", base));
-        ListRef::new(self.0.shared.clone(), Resource::extract_ref(self))
+        ListRef::new(self.0.shared.clone(), Resource::extract_ref(&self))
     }
 }
 
