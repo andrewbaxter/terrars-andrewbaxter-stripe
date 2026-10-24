@@ -1,47 +1,44 @@
 use serde::Serialize;
-use std::cell::RefCell;
-use std::rc::Rc;
-use terrars::*;
 
 #[derive(Serialize)]
 struct ProviderStripeData {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    alias: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    ratelimit: Option<PrimField<f64>>,
-    token: PrimField<String>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    alias: std::option::Option<std::string::String>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    ratelimit: std::option::Option<terrars::PrimField<f64>>,
+    token: terrars::PrimField<std::string::String>,
 }
 
 struct ProviderStripe_ {
-    data: RefCell<ProviderStripeData>,
+    data: std::cell::RefCell<ProviderStripeData>,
 }
 
-pub struct ProviderStripe(Rc<ProviderStripe_>);
+pub struct ProviderStripe(std::rc::Rc<ProviderStripe_>);
 
 impl ProviderStripe {
-    pub fn provider_ref(&self) -> String {
+    pub fn provider_ref(&self) -> std::string::String {
         let data = self.0.data.borrow();
-        if let Some(alias) = &data.alias {
+        if let std::option::Option::Some(alias) = &data.alias {
             format!("{}.{}", "stripe", alias)
         } else {
             "stripe".into()
         }
     }
 
-    pub fn set_alias(self, alias: impl ToString) -> Self {
-        self.0.data.borrow_mut().alias = Some(alias.to_string());
+    pub fn set_alias(self, alias: impl std::string::ToString) -> Self {
+        self.0.data.borrow_mut().alias = std::option::Option::Some(alias.to_string());
         self
     }
 
-    #[doc= "Set the field `ratelimit`.\nRate limit, max requests per second"]
-    pub fn set_ratelimit(self, v: impl Into<PrimField<f64>>) -> Self {
-        self.0.data.borrow_mut().ratelimit = Some(v.into());
+    #[doc = "Set the field `ratelimit`.\nRate limit, max requests per second"]
+    pub fn set_ratelimit(self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.0.data.borrow_mut().ratelimit = std::option::Option::Some(v.into());
         self
     }
 }
 
-impl Provider for ProviderStripe_ {
-    fn extract_type_tf_id(&self) -> String {
+impl terrars::Provider for ProviderStripe_ {
+    fn extract_type_tf_id(&self) -> std::string::String {
         "stripe".into()
     }
 
@@ -58,14 +55,14 @@ impl Provider for ProviderStripe_ {
 }
 
 pub struct BuildProviderStripe {
-    #[doc= "Stripe API token"]
-    pub token: PrimField<String>,
+    #[doc = "Stripe API token"]
+    pub token: terrars::PrimField<std::string::String>,
 }
 
 impl BuildProviderStripe {
-    pub fn build(self, stack: &mut Stack) -> ProviderStripe {
-        let out = ProviderStripe(Rc::new(ProviderStripe_ { data: RefCell::new(ProviderStripeData {
-            alias: None,
+    pub fn build(self, stack: &mut terrars::Stack) -> ProviderStripe {
+        let out = ProviderStripe(std::rc::Rc::new(ProviderStripe_ { data: std::cell::RefCell::new(ProviderStripeData {
+            alias: std::option::Option::None,
             ratelimit: core::default::Default::default(),
             token: self.token,
         }) }));
