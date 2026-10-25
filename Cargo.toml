@@ -1,6 +1,6 @@
 [package]
 name = "terrars-andrewbaxter-stripe"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 description = "Pre-generated Terrars Stripe bindings"
 readme = "readme.md"
