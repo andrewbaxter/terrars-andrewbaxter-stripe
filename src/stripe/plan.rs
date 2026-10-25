@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct PlanData {
+struct PlanData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -45,14 +47,14 @@ struct PlanData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     usage_type: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tiers: std::option::Option<std::vec::Vec<PlanTiersEl>>,
+    tiers: std::option::Option<std::vec::Vec<Plan_Tiers>>,
     dynamic: PlanDynamic,
 }
 
 struct Plan_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<PlanData>,
+    data: std::cell::RefCell<PlanData_>,
 }
 
 #[derive(Clone)]
@@ -233,7 +235,7 @@ impl Plan {
     }
 
     #[doc = "Set the field `tiers`.\n"]
-    pub fn set_tiers(self, v: impl std::convert::Into<terrars::BlockAssignable<PlanTiersEl>>) -> Self {
+    pub fn set_tiers(self, v: impl std::convert::Into<terrars::BlockAssignable<Plan_Tiers>>) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
                 self.0.data.borrow_mut().tiers = std::option::Option::Some(v);
@@ -354,7 +356,7 @@ impl Plan {
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<PlanTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Plan_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.extract_ref()))
     }
 }
@@ -404,7 +406,7 @@ impl BuildPlan {
         let out = Plan(std::rc::Rc::new(Plan_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(PlanData {
+            data: std::cell::RefCell::new(PlanData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -565,13 +567,13 @@ impl PlanRef {
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<PlanTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Plan_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct PlanTiersEl {
+pub struct Plan_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -583,7 +585,7 @@ pub struct PlanTiersEl {
     up_to: terrars::PrimField<std::string::String>,
 }
 
-impl PlanTiersEl {
+impl Plan_Tiers {
     #[doc = "Set the field `flat_amount`.\nPrice for the entire tier."]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -617,8 +619,8 @@ impl PlanTiersEl {
     }
 }
 
-impl terrars::ToListMappable for PlanTiersEl {
-    type O = terrars::BlockAssignable<PlanTiersEl>;
+impl terrars::ToListMappable for Plan_Tiers {
+    type O = terrars::BlockAssignable<Plan_Tiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -629,14 +631,14 @@ impl terrars::ToListMappable for PlanTiersEl {
     }
 }
 
-pub struct BuildPlanTiersEl {
+pub struct BuildPlan_Tiers {
     #[doc = "Up to and including to this quantity will be contained in the tier."]
     pub up_to: terrars::PrimField<std::string::String>,
 }
 
-impl BuildPlanTiersEl {
-    pub fn build(self) -> PlanTiersEl {
-        PlanTiersEl {
+impl BuildPlan_Tiers {
+    pub fn build(self) -> Plan_Tiers {
+        Plan_Tiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -646,21 +648,23 @@ impl BuildPlanTiersEl {
     }
 }
 
-pub struct PlanTiersElRef {
+#[allow(dead_code)]
+pub struct Plan_TiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PlanTiersElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PlanTiersElRef {
-        PlanTiersElRef {
+impl terrars::Ref for Plan_TiersRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Plan_TiersRef {
+        Plan_TiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PlanTiersElRef {
+impl Plan_TiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -697,5 +701,5 @@ impl PlanTiersElRef {
 
 #[derive(Serialize, Default)]
 struct PlanDynamic {
-    tiers: std::option::Option<terrars::DynamicBlock<PlanTiersEl>>,
+    tiers: std::option::Option<terrars::DynamicBlock<Plan_Tiers>>,
 }

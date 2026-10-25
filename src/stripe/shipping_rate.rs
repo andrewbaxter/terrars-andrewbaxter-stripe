@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct ShippingRateData {
+struct ShippingRateData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -38,14 +40,14 @@ struct ShippingRateData {
     #[serde(rename = "type", skip_serializing_if = "std::option::Option::is_none")]
     type_: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    fixed_amount_currency_options: std::option::Option<std::vec::Vec<ShippingRateFixedAmountCurrencyOptionsEl>>,
+    fixed_amount_currency_options: std::option::Option<std::vec::Vec<ShippingRate_FixedAmountCurrencyOptions>>,
     dynamic: ShippingRateDynamic,
 }
 
 struct ShippingRate_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<ShippingRateData>,
+    data: std::cell::RefCell<ShippingRateData_>,
 }
 
 #[derive(Clone)]
@@ -212,7 +214,7 @@ impl ShippingRate {
     #[doc = "Set the field `fixed_amount_currency_options`.\n"]
     pub fn set_fixed_amount_currency_options(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<ShippingRateFixedAmountCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<ShippingRate_FixedAmountCurrencyOptions>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -321,7 +323,7 @@ impl ShippingRate {
     }
 
     #[doc = "Get a reference to the value of field `fixed_amount_currency_options` after provisioning.\n"]
-    pub fn fixed_amount_currency_options(&self) -> terrars::ListRef<ShippingRateFixedAmountCurrencyOptionsElRef> {
+    pub fn fixed_amount_currency_options(&self) -> terrars::ListRef<ShippingRate_FixedAmountCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.fixed_amount_currency_options", self.extract_ref()))
     }
 }
@@ -369,7 +371,7 @@ impl BuildShippingRate {
         let out = ShippingRate(std::rc::Rc::new(ShippingRate_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(ShippingRateData {
+            data: std::cell::RefCell::new(ShippingRateData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -513,20 +515,20 @@ impl ShippingRateRef {
     }
 
     #[doc = "Get a reference to the value of field `fixed_amount_currency_options` after provisioning.\n"]
-    pub fn fixed_amount_currency_options(&self) -> terrars::ListRef<ShippingRateFixedAmountCurrencyOptionsElRef> {
+    pub fn fixed_amount_currency_options(&self) -> terrars::ListRef<ShippingRate_FixedAmountCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.fixed_amount_currency_options", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct ShippingRateFixedAmountCurrencyOptionsEl {
+pub struct ShippingRate_FixedAmountCurrencyOptions {
     amount: terrars::PrimField<f64>,
     key: terrars::PrimField<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     tax_behavior: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl ShippingRateFixedAmountCurrencyOptionsEl {
+impl ShippingRate_FixedAmountCurrencyOptions {
     #[doc =
         "Set the field `tax_behavior`.\nSpecifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`."]
     pub fn set_tax_behavior(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
@@ -535,8 +537,8 @@ impl ShippingRateFixedAmountCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for ShippingRateFixedAmountCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<ShippingRateFixedAmountCurrencyOptionsEl>;
+impl terrars::ToListMappable for ShippingRate_FixedAmountCurrencyOptions {
+    type O = terrars::BlockAssignable<ShippingRate_FixedAmountCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -547,16 +549,16 @@ impl terrars::ToListMappable for ShippingRateFixedAmountCurrencyOptionsEl {
     }
 }
 
-pub struct BuildShippingRateFixedAmountCurrencyOptionsEl {
+pub struct BuildShippingRate_FixedAmountCurrencyOptions {
     #[doc = "A non-negative integer in cents representing how much to charge."]
     pub amount: terrars::PrimField<f64>,
     #[doc = "Key for this field in parent map (synthetic to work around Terraform limitations)"]
     pub key: terrars::PrimField<std::string::String>,
 }
 
-impl BuildShippingRateFixedAmountCurrencyOptionsEl {
-    pub fn build(self) -> ShippingRateFixedAmountCurrencyOptionsEl {
-        ShippingRateFixedAmountCurrencyOptionsEl {
+impl BuildShippingRate_FixedAmountCurrencyOptions {
+    pub fn build(self) -> ShippingRate_FixedAmountCurrencyOptions {
+        ShippingRate_FixedAmountCurrencyOptions {
             amount: self.amount,
             key: self.key,
             tax_behavior: core::default::Default::default(),
@@ -564,21 +566,23 @@ impl BuildShippingRateFixedAmountCurrencyOptionsEl {
     }
 }
 
-pub struct ShippingRateFixedAmountCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct ShippingRate_FixedAmountCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for ShippingRateFixedAmountCurrencyOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> ShippingRateFixedAmountCurrencyOptionsElRef {
-        ShippingRateFixedAmountCurrencyOptionsElRef {
+impl terrars::Ref for ShippingRate_FixedAmountCurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> ShippingRate_FixedAmountCurrencyOptionsRef {
+        ShippingRate_FixedAmountCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl ShippingRateFixedAmountCurrencyOptionsElRef {
+impl ShippingRate_FixedAmountCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -606,5 +610,5 @@ impl ShippingRateFixedAmountCurrencyOptionsElRef {
 struct ShippingRateDynamic {
     fixed_amount_currency_options: std
     ::option
-    ::Option<terrars::DynamicBlock<ShippingRateFixedAmountCurrencyOptionsEl>>,
+    ::Option<terrars::DynamicBlock<ShippingRate_FixedAmountCurrencyOptions>>,
 }

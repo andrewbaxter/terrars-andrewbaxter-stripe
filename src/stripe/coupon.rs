@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct CouponData {
+struct CouponData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -37,14 +39,14 @@ struct CouponData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     redeem_by: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    currency_options: std::option::Option<std::vec::Vec<CouponCurrencyOptionsEl>>,
+    currency_options: std::option::Option<std::vec::Vec<Coupon_CurrencyOptions>>,
     dynamic: CouponDynamic,
 }
 
 struct Coupon_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<CouponData>,
+    data: std::cell::RefCell<CouponData_>,
 }
 
 #[derive(Clone)]
@@ -212,7 +214,7 @@ impl Coupon {
     #[doc = "Set the field `currency_options`.\n"]
     pub fn set_currency_options(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<CouponCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<Coupon_CurrencyOptions>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -316,7 +318,7 @@ impl Coupon {
     }
 
     #[doc = "Get a reference to the value of field `currency_options` after provisioning.\n"]
-    pub fn currency_options(&self) -> terrars::ListRef<CouponCurrencyOptionsElRef> {
+    pub fn currency_options(&self) -> terrars::ListRef<Coupon_CurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.currency_options", self.extract_ref()))
     }
 }
@@ -361,7 +363,7 @@ impl BuildCoupon {
         let out = Coupon(std::rc::Rc::new(Coupon_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(CouponData {
+            data: std::cell::RefCell::new(CouponData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -499,21 +501,21 @@ impl CouponRef {
     }
 
     #[doc = "Get a reference to the value of field `currency_options` after provisioning.\n"]
-    pub fn currency_options(&self) -> terrars::ListRef<CouponCurrencyOptionsElRef> {
+    pub fn currency_options(&self) -> terrars::ListRef<Coupon_CurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.currency_options", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct CouponCurrencyOptionsEl {
+pub struct Coupon_CurrencyOptions {
     amount_off: terrars::PrimField<f64>,
     key: terrars::PrimField<std::string::String>,
 }
 
-impl CouponCurrencyOptionsEl { }
+impl Coupon_CurrencyOptions { }
 
-impl terrars::ToListMappable for CouponCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<CouponCurrencyOptionsEl>;
+impl terrars::ToListMappable for Coupon_CurrencyOptions {
+    type O = terrars::BlockAssignable<Coupon_CurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -524,7 +526,7 @@ impl terrars::ToListMappable for CouponCurrencyOptionsEl {
     }
 }
 
-pub struct BuildCouponCurrencyOptionsEl {
+pub struct BuildCoupon_CurrencyOptions {
     #[doc =
         "Amount (in the `currency` specified) that will be taken off the subtotal of any invoices for this customer."]
     pub amount_off: terrars::PrimField<f64>,
@@ -532,30 +534,32 @@ pub struct BuildCouponCurrencyOptionsEl {
     pub key: terrars::PrimField<std::string::String>,
 }
 
-impl BuildCouponCurrencyOptionsEl {
-    pub fn build(self) -> CouponCurrencyOptionsEl {
-        CouponCurrencyOptionsEl {
+impl BuildCoupon_CurrencyOptions {
+    pub fn build(self) -> Coupon_CurrencyOptions {
+        Coupon_CurrencyOptions {
             amount_off: self.amount_off,
             key: self.key,
         }
     }
 }
 
-pub struct CouponCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Coupon_CurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CouponCurrencyOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CouponCurrencyOptionsElRef {
-        CouponCurrencyOptionsElRef {
+impl terrars::Ref for Coupon_CurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Coupon_CurrencyOptionsRef {
+        Coupon_CurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CouponCurrencyOptionsElRef {
+impl Coupon_CurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -575,5 +579,5 @@ impl CouponCurrencyOptionsElRef {
 
 #[derive(Serialize, Default)]
 struct CouponDynamic {
-    currency_options: std::option::Option<terrars::DynamicBlock<CouponCurrencyOptionsEl>>,
+    currency_options: std::option::Option<terrars::DynamicBlock<Coupon_CurrencyOptions>>,
 }

@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct BillingPortalConfigurationData {
+struct BillingPortalConfigurationData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -63,14 +65,14 @@ struct BillingPortalConfigurationData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     features_subscription_update_products: std
     ::option
-    ::Option<std::vec::Vec<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl>>,
+    ::Option<std::vec::Vec<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>>,
     dynamic: BillingPortalConfigurationDynamic,
 }
 
 struct BillingPortalConfiguration_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<BillingPortalConfigurationData>,
+    data: std::cell::RefCell<BillingPortalConfigurationData_>,
 }
 
 #[derive(Clone)]
@@ -335,7 +337,7 @@ impl BillingPortalConfiguration {
 
                     std
                     ::convert
-                    ::Into<terrars::BlockAssignable<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl>>,
+                    ::Into<terrars::BlockAssignable<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -556,7 +558,7 @@ impl BillingPortalConfiguration {
     #[doc = "Get a reference to the value of field `features_subscription_update_products` after provisioning.\n"]
     pub fn features_subscription_update_products(
         &self,
-    ) -> terrars::ListRef<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef> {
+    ) -> terrars::ListRef<BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.features_subscription_update_products", self.extract_ref()),
@@ -604,7 +606,7 @@ impl BuildBillingPortalConfiguration {
         let out = BillingPortalConfiguration(std::rc::Rc::new(BillingPortalConfiguration_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(BillingPortalConfigurationData {
+            data: std::cell::RefCell::new(BillingPortalConfigurationData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -867,7 +869,7 @@ impl BillingPortalConfigurationRef {
     #[doc = "Get a reference to the value of field `features_subscription_update_products` after provisioning.\n"]
     pub fn features_subscription_update_products(
         &self,
-    ) -> terrars::ListRef<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef> {
+    ) -> terrars::ListRef<BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.features_subscription_update_products", self.extract_ref()),
@@ -876,15 +878,15 @@ impl BillingPortalConfigurationRef {
 }
 
 #[derive(Serialize)]
-pub struct BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
+pub struct BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
     prices: terrars::ListField<terrars::PrimField<std::string::String>>,
     product: terrars::PrimField<std::string::String>,
 }
 
-impl BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl { }
+impl BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts { }
 
-impl terrars::ToListMappable for BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
-    type O = terrars::BlockAssignable<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl>;
+impl terrars::ToListMappable for BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
+    type O = terrars::BlockAssignable<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -895,40 +897,42 @@ impl terrars::ToListMappable for BillingPortalConfigurationFeaturesSubscriptionU
     }
 }
 
-pub struct BuildBillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
+pub struct BuildBillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
     #[doc = "The list of price IDs which, when subscribed to, a subscription can be updated."]
     pub prices: terrars::ListField<terrars::PrimField<std::string::String>>,
     #[doc = "The product ID."]
     pub product: terrars::PrimField<std::string::String>,
 }
 
-impl BuildBillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
-    pub fn build(self) -> BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
-        BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl {
+impl BuildBillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
+    pub fn build(self) -> BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
+        BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
             prices: self.prices,
             product: self.product,
         }
     }
 }
 
-pub struct BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
+#[allow(dead_code)]
+pub struct BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
+impl terrars::Ref for BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
-        BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
+    ) -> BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
+        BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
+impl BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -949,5 +953,5 @@ impl BillingPortalConfigurationFeaturesSubscriptionUpdateProductsElRef {
 struct BillingPortalConfigurationDynamic {
     features_subscription_update_products: std
     ::option
-    ::Option<terrars::DynamicBlock<BillingPortalConfigurationFeaturesSubscriptionUpdateProductsEl>>,
+    ::Option<terrars::DynamicBlock<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>>,
 }

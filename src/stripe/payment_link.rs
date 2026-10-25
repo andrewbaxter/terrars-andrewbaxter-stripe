@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct PaymentLinkData {
+struct PaymentLinkData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -75,16 +77,16 @@ struct PaymentLinkData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     transfer_data_destination: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    line_items: std::option::Option<std::vec::Vec<PaymentLinkLineItemsEl>>,
+    line_items: std::option::Option<std::vec::Vec<PaymentLink_LineItems>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    shipping_options: std::option::Option<std::vec::Vec<PaymentLinkShippingOptionsEl>>,
+    shipping_options: std::option::Option<std::vec::Vec<PaymentLink_ShippingOptions>>,
     dynamic: PaymentLinkDynamic,
 }
 
 struct PaymentLink_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<PaymentLinkData>,
+    data: std::cell::RefCell<PaymentLinkData_>,
 }
 
 #[derive(Clone)]
@@ -410,7 +412,7 @@ impl PaymentLink {
     }
 
     #[doc = "Set the field `line_items`.\n"]
-    pub fn set_line_items(self, v: impl std::convert::Into<terrars::BlockAssignable<PaymentLinkLineItemsEl>>) -> Self {
+    pub fn set_line_items(self, v: impl std::convert::Into<terrars::BlockAssignable<PaymentLink_LineItems>>) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
                 self.0.data.borrow_mut().line_items = std::option::Option::Some(v);
@@ -425,7 +427,7 @@ impl PaymentLink {
     #[doc = "Set the field `shipping_options`.\n"]
     pub fn set_shipping_options(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<PaymentLinkShippingOptionsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<PaymentLink_ShippingOptions>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -659,12 +661,12 @@ impl PaymentLink {
     }
 
     #[doc = "Get a reference to the value of field `line_items` after provisioning.\n"]
-    pub fn line_items(&self) -> terrars::ListRef<PaymentLinkLineItemsElRef> {
+    pub fn line_items(&self) -> terrars::ListRef<PaymentLink_LineItemsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.line_items", self.extract_ref()))
     }
 
     #[doc = "Get a reference to the value of field `shipping_options` after provisioning.\n"]
-    pub fn shipping_options(&self) -> terrars::ListRef<PaymentLinkShippingOptionsElRef> {
+    pub fn shipping_options(&self) -> terrars::ListRef<PaymentLink_ShippingOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.shipping_options", self.extract_ref()))
     }
 }
@@ -709,7 +711,7 @@ impl BuildPaymentLink {
         let out = PaymentLink(std::rc::Rc::new(PaymentLink_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(PaymentLinkData {
+            data: std::cell::RefCell::new(PaymentLinkData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -996,18 +998,18 @@ impl PaymentLinkRef {
     }
 
     #[doc = "Get a reference to the value of field `line_items` after provisioning.\n"]
-    pub fn line_items(&self) -> terrars::ListRef<PaymentLinkLineItemsElRef> {
+    pub fn line_items(&self) -> terrars::ListRef<PaymentLink_LineItemsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.line_items", self.extract_ref()))
     }
 
     #[doc = "Get a reference to the value of field `shipping_options` after provisioning.\n"]
-    pub fn shipping_options(&self) -> terrars::ListRef<PaymentLinkShippingOptionsElRef> {
+    pub fn shipping_options(&self) -> terrars::ListRef<PaymentLink_ShippingOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.shipping_options", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct PaymentLinkLineItemsEl {
+pub struct PaymentLink_LineItems {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     adjustable_quantity_enabled: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1018,7 +1020,7 @@ pub struct PaymentLinkLineItemsEl {
     quantity: terrars::PrimField<f64>,
 }
 
-impl PaymentLinkLineItemsEl {
+impl PaymentLink_LineItems {
     #[doc = "Set the field `adjustable_quantity_enabled`.\n"]
     pub fn set_adjustable_quantity_enabled(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.adjustable_quantity_enabled = std::option::Option::Some(v.into());
@@ -1038,8 +1040,8 @@ impl PaymentLinkLineItemsEl {
     }
 }
 
-impl terrars::ToListMappable for PaymentLinkLineItemsEl {
-    type O = terrars::BlockAssignable<PaymentLinkLineItemsEl>;
+impl terrars::ToListMappable for PaymentLink_LineItems {
+    type O = terrars::BlockAssignable<PaymentLink_LineItems>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1050,16 +1052,16 @@ impl terrars::ToListMappable for PaymentLinkLineItemsEl {
     }
 }
 
-pub struct BuildPaymentLinkLineItemsEl {
+pub struct BuildPaymentLink_LineItems {
     #[doc = ""]
     pub price: terrars::PrimField<std::string::String>,
     #[doc = ""]
     pub quantity: terrars::PrimField<f64>,
 }
 
-impl BuildPaymentLinkLineItemsEl {
-    pub fn build(self) -> PaymentLinkLineItemsEl {
-        PaymentLinkLineItemsEl {
+impl BuildPaymentLink_LineItems {
+    pub fn build(self) -> PaymentLink_LineItems {
+        PaymentLink_LineItems {
             adjustable_quantity_enabled: core::default::Default::default(),
             adjustable_quantity_maximum: core::default::Default::default(),
             adjustable_quantity_minimum: core::default::Default::default(),
@@ -1069,21 +1071,23 @@ impl BuildPaymentLinkLineItemsEl {
     }
 }
 
-pub struct PaymentLinkLineItemsElRef {
+#[allow(dead_code)]
+pub struct PaymentLink_LineItemsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PaymentLinkLineItemsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PaymentLinkLineItemsElRef {
-        PaymentLinkLineItemsElRef {
+impl terrars::Ref for PaymentLink_LineItemsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> PaymentLink_LineItemsRef {
+        PaymentLink_LineItemsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PaymentLinkLineItemsElRef {
+impl PaymentLink_LineItemsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1115,12 +1119,12 @@ impl PaymentLinkLineItemsElRef {
 }
 
 #[derive(Serialize)]
-pub struct PaymentLinkShippingOptionsEl {
+pub struct PaymentLink_ShippingOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     shipping_rate: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl PaymentLinkShippingOptionsEl {
+impl PaymentLink_ShippingOptions {
     #[doc = "Set the field `shipping_rate`.\nThe ID of the Shipping Rate to use for this shipping option."]
     pub fn set_shipping_rate(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.shipping_rate = std::option::Option::Some(v.into());
@@ -1128,8 +1132,8 @@ impl PaymentLinkShippingOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for PaymentLinkShippingOptionsEl {
-    type O = terrars::BlockAssignable<PaymentLinkShippingOptionsEl>;
+impl terrars::ToListMappable for PaymentLink_ShippingOptions {
+    type O = terrars::BlockAssignable<PaymentLink_ShippingOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1140,29 +1144,31 @@ impl terrars::ToListMappable for PaymentLinkShippingOptionsEl {
     }
 }
 
-pub struct BuildPaymentLinkShippingOptionsEl {}
+pub struct BuildPaymentLink_ShippingOptions {}
 
-impl BuildPaymentLinkShippingOptionsEl {
-    pub fn build(self) -> PaymentLinkShippingOptionsEl {
-        PaymentLinkShippingOptionsEl { shipping_rate: core::default::Default::default() }
+impl BuildPaymentLink_ShippingOptions {
+    pub fn build(self) -> PaymentLink_ShippingOptions {
+        PaymentLink_ShippingOptions { shipping_rate: core::default::Default::default() }
     }
 }
 
-pub struct PaymentLinkShippingOptionsElRef {
+#[allow(dead_code)]
+pub struct PaymentLink_ShippingOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PaymentLinkShippingOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PaymentLinkShippingOptionsElRef {
-        PaymentLinkShippingOptionsElRef {
+impl terrars::Ref for PaymentLink_ShippingOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> PaymentLink_ShippingOptionsRef {
+        PaymentLink_ShippingOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PaymentLinkShippingOptionsElRef {
+impl PaymentLink_ShippingOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1182,6 +1188,6 @@ impl PaymentLinkShippingOptionsElRef {
 
 #[derive(Serialize, Default)]
 struct PaymentLinkDynamic {
-    line_items: std::option::Option<terrars::DynamicBlock<PaymentLinkLineItemsEl>>,
-    shipping_options: std::option::Option<terrars::DynamicBlock<PaymentLinkShippingOptionsEl>>,
+    line_items: std::option::Option<terrars::DynamicBlock<PaymentLink_LineItems>>,
+    shipping_options: std::option::Option<terrars::DynamicBlock<PaymentLink_ShippingOptions>>,
 }

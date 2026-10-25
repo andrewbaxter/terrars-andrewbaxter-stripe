@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct RadarValueListData {
+struct RadarValueListData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -27,7 +29,7 @@ struct RadarValueListData {
 struct RadarValueList_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<RadarValueListData>,
+    data: std::cell::RefCell<RadarValueListData_>,
 }
 
 #[derive(Clone)]
@@ -164,7 +166,7 @@ impl RadarValueList {
     }
 
     #[doc = "Get a reference to the value of field `list_items_data` after provisioning.\nDetails about each object."]
-    pub fn list_items_data(&self) -> terrars::ListRef<RadarValueListListItemsDataElRef> {
+    pub fn list_items_data(&self) -> terrars::ListRef<RadarValueList_ListItemsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.list_items_data", self.extract_ref()))
     }
 
@@ -249,7 +251,7 @@ impl BuildRadarValueList {
         let out = RadarValueList(std::rc::Rc::new(RadarValueList_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(RadarValueListData {
+            data: std::cell::RefCell::new(RadarValueListData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -318,7 +320,7 @@ impl RadarValueListRef {
     }
 
     #[doc = "Get a reference to the value of field `list_items_data` after provisioning.\nDetails about each object."]
-    pub fn list_items_data(&self) -> terrars::ListRef<RadarValueListListItemsDataElRef> {
+    pub fn list_items_data(&self) -> terrars::ListRef<RadarValueList_ListItemsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.list_items_data", self.extract_ref()))
     }
 
@@ -360,7 +362,7 @@ impl RadarValueListRef {
 }
 
 #[derive(Serialize)]
-pub struct RadarValueListListItemsDataEl {
+pub struct RadarValueList_ListItemsData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     created: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -377,7 +379,7 @@ pub struct RadarValueListListItemsDataEl {
     value_list: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl RadarValueListListItemsDataEl {
+impl RadarValueList_ListItemsData {
     #[doc = "Set the field `created`.\n"]
     pub fn set_created(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.created = std::option::Option::Some(v.into());
@@ -421,8 +423,8 @@ impl RadarValueListListItemsDataEl {
     }
 }
 
-impl terrars::ToListMappable for RadarValueListListItemsDataEl {
-    type O = terrars::BlockAssignable<RadarValueListListItemsDataEl>;
+impl terrars::ToListMappable for RadarValueList_ListItemsData {
+    type O = terrars::BlockAssignable<RadarValueList_ListItemsData>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -433,11 +435,11 @@ impl terrars::ToListMappable for RadarValueListListItemsDataEl {
     }
 }
 
-pub struct BuildRadarValueListListItemsDataEl {}
+pub struct BuildRadarValueList_ListItemsData {}
 
-impl BuildRadarValueListListItemsDataEl {
-    pub fn build(self) -> RadarValueListListItemsDataEl {
-        RadarValueListListItemsDataEl {
+impl BuildRadarValueList_ListItemsData {
+    pub fn build(self) -> RadarValueList_ListItemsData {
+        RadarValueList_ListItemsData {
             created: core::default::Default::default(),
             created_by: core::default::Default::default(),
             id: core::default::Default::default(),
@@ -449,21 +451,23 @@ impl BuildRadarValueListListItemsDataEl {
     }
 }
 
-pub struct RadarValueListListItemsDataElRef {
+#[allow(dead_code)]
+pub struct RadarValueList_ListItemsDataRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for RadarValueListListItemsDataElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> RadarValueListListItemsDataElRef {
-        RadarValueListListItemsDataElRef {
+impl terrars::Ref for RadarValueList_ListItemsDataRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> RadarValueList_ListItemsDataRef {
+        RadarValueList_ListItemsDataRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl RadarValueListListItemsDataElRef {
+impl RadarValueList_ListItemsDataRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }

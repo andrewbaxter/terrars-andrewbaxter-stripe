@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct AccountData {
+struct AccountData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -387,7 +389,7 @@ struct AccountData {
 struct Account_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<AccountData>,
+    data: std::cell::RefCell<AccountData_>,
 }
 
 #[derive(Clone)]
@@ -2796,7 +2798,7 @@ impl Account {
 
     #[doc =
         "Get a reference to the value of field `future_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
-    pub fn future_requirements_alternatives(&self) -> terrars::ListRef<AccountFutureRequirementsAlternativesElRef> {
+    pub fn future_requirements_alternatives(&self) -> terrars::ListRef<Account_FutureRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.future_requirements_alternatives", self.extract_ref()),
@@ -2832,7 +2834,7 @@ impl Account {
 
     #[doc =
         "Get a reference to the value of field `future_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn future_requirements_errors(&self) -> terrars::ListRef<AccountFutureRequirementsErrorsElRef> {
+    pub fn future_requirements_errors(&self) -> terrars::ListRef<Account_FutureRequirementsErrorsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.future_requirements_errors", self.extract_ref()))
     }
 
@@ -3081,7 +3083,7 @@ impl Account {
         "Get a reference to the value of field `individual_future_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
     pub fn individual_future_requirements_alternatives(
         &self,
-    ) -> terrars::ListRef<AccountIndividualFutureRequirementsAlternativesElRef> {
+    ) -> terrars::ListRef<Account_IndividualFutureRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_future_requirements_alternatives", self.extract_ref()),
@@ -3103,7 +3105,7 @@ impl Account {
         "Get a reference to the value of field `individual_future_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
     pub fn individual_future_requirements_errors(
         &self,
-    ) -> terrars::ListRef<AccountIndividualFutureRequirementsErrorsElRef> {
+    ) -> terrars::ListRef<Account_IndividualFutureRequirementsErrorsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_future_requirements_errors", self.extract_ref()),
@@ -3351,7 +3353,7 @@ impl Account {
         "Get a reference to the value of field `individual_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
     pub fn individual_requirements_alternatives(
         &self,
-    ) -> terrars::ListRef<AccountIndividualRequirementsAlternativesElRef> {
+    ) -> terrars::ListRef<Account_IndividualRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_requirements_alternatives", self.extract_ref()),
@@ -3369,7 +3371,7 @@ impl Account {
 
     #[doc =
         "Get a reference to the value of field `individual_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn individual_requirements_errors(&self) -> terrars::ListRef<AccountIndividualRequirementsErrorsElRef> {
+    pub fn individual_requirements_errors(&self) -> terrars::ListRef<Account_IndividualRequirementsErrorsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_requirements_errors", self.extract_ref()),
@@ -3532,7 +3534,7 @@ impl Account {
 
     #[doc =
         "Get a reference to the value of field `requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
-    pub fn requirements_alternatives(&self) -> terrars::ListRef<AccountRequirementsAlternativesElRef> {
+    pub fn requirements_alternatives(&self) -> terrars::ListRef<Account_RequirementsAlternativesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.requirements_alternatives", self.extract_ref()))
     }
 
@@ -3559,7 +3561,7 @@ impl Account {
 
     #[doc =
         "Get a reference to the value of field `requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn requirements_errors(&self) -> terrars::ListRef<AccountRequirementsErrorsElRef> {
+    pub fn requirements_errors(&self) -> terrars::ListRef<Account_RequirementsErrorsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.requirements_errors", self.extract_ref()))
     }
 
@@ -3919,7 +3921,7 @@ impl BuildAccount {
         let out = Account(std::rc::Rc::new(Account_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(AccountData {
+            data: std::cell::RefCell::new(AccountData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -4931,7 +4933,7 @@ impl AccountRef {
 
     #[doc =
         "Get a reference to the value of field `future_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
-    pub fn future_requirements_alternatives(&self) -> terrars::ListRef<AccountFutureRequirementsAlternativesElRef> {
+    pub fn future_requirements_alternatives(&self) -> terrars::ListRef<Account_FutureRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.future_requirements_alternatives", self.extract_ref()),
@@ -4967,7 +4969,7 @@ impl AccountRef {
 
     #[doc =
         "Get a reference to the value of field `future_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn future_requirements_errors(&self) -> terrars::ListRef<AccountFutureRequirementsErrorsElRef> {
+    pub fn future_requirements_errors(&self) -> terrars::ListRef<Account_FutureRequirementsErrorsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.future_requirements_errors", self.extract_ref()))
     }
 
@@ -5216,7 +5218,7 @@ impl AccountRef {
         "Get a reference to the value of field `individual_future_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
     pub fn individual_future_requirements_alternatives(
         &self,
-    ) -> terrars::ListRef<AccountIndividualFutureRequirementsAlternativesElRef> {
+    ) -> terrars::ListRef<Account_IndividualFutureRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_future_requirements_alternatives", self.extract_ref()),
@@ -5238,7 +5240,7 @@ impl AccountRef {
         "Get a reference to the value of field `individual_future_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
     pub fn individual_future_requirements_errors(
         &self,
-    ) -> terrars::ListRef<AccountIndividualFutureRequirementsErrorsElRef> {
+    ) -> terrars::ListRef<Account_IndividualFutureRequirementsErrorsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_future_requirements_errors", self.extract_ref()),
@@ -5486,7 +5488,7 @@ impl AccountRef {
         "Get a reference to the value of field `individual_requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
     pub fn individual_requirements_alternatives(
         &self,
-    ) -> terrars::ListRef<AccountIndividualRequirementsAlternativesElRef> {
+    ) -> terrars::ListRef<Account_IndividualRequirementsAlternativesRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_requirements_alternatives", self.extract_ref()),
@@ -5504,7 +5506,7 @@ impl AccountRef {
 
     #[doc =
         "Get a reference to the value of field `individual_requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn individual_requirements_errors(&self) -> terrars::ListRef<AccountIndividualRequirementsErrorsElRef> {
+    pub fn individual_requirements_errors(&self) -> terrars::ListRef<Account_IndividualRequirementsErrorsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.individual_requirements_errors", self.extract_ref()),
@@ -5667,7 +5669,7 @@ impl AccountRef {
 
     #[doc =
         "Get a reference to the value of field `requirements_alternatives` after provisioning.\nFields that are due and can be satisfied by providing the corresponding alternative fields instead."]
-    pub fn requirements_alternatives(&self) -> terrars::ListRef<AccountRequirementsAlternativesElRef> {
+    pub fn requirements_alternatives(&self) -> terrars::ListRef<Account_RequirementsAlternativesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.requirements_alternatives", self.extract_ref()))
     }
 
@@ -5694,7 +5696,7 @@ impl AccountRef {
 
     #[doc =
         "Get a reference to the value of field `requirements_errors` after provisioning.\nFields that are `currently_due` and need to be collected again because validation or verification failed."]
-    pub fn requirements_errors(&self) -> terrars::ListRef<AccountRequirementsErrorsElRef> {
+    pub fn requirements_errors(&self) -> terrars::ListRef<Account_RequirementsErrorsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.requirements_errors", self.extract_ref()))
     }
 
@@ -6015,14 +6017,14 @@ impl AccountRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountFutureRequirementsAlternativesEl {
+pub struct Account_FutureRequirementsAlternatives {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alternative_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     original_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
 }
 
-impl AccountFutureRequirementsAlternativesEl {
+impl Account_FutureRequirementsAlternatives {
     #[doc = "Set the field `alternative_fields_due`.\n"]
     pub fn set_alternative_fields_due(
         mut self,
@@ -6042,8 +6044,8 @@ impl AccountFutureRequirementsAlternativesEl {
     }
 }
 
-impl terrars::ToListMappable for AccountFutureRequirementsAlternativesEl {
-    type O = terrars::BlockAssignable<AccountFutureRequirementsAlternativesEl>;
+impl terrars::ToListMappable for Account_FutureRequirementsAlternatives {
+    type O = terrars::BlockAssignable<Account_FutureRequirementsAlternatives>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6054,32 +6056,34 @@ impl terrars::ToListMappable for AccountFutureRequirementsAlternativesEl {
     }
 }
 
-pub struct BuildAccountFutureRequirementsAlternativesEl {}
+pub struct BuildAccount_FutureRequirementsAlternatives {}
 
-impl BuildAccountFutureRequirementsAlternativesEl {
-    pub fn build(self) -> AccountFutureRequirementsAlternativesEl {
-        AccountFutureRequirementsAlternativesEl {
+impl BuildAccount_FutureRequirementsAlternatives {
+    pub fn build(self) -> Account_FutureRequirementsAlternatives {
+        Account_FutureRequirementsAlternatives {
             alternative_fields_due: core::default::Default::default(),
             original_fields_due: core::default::Default::default(),
         }
     }
 }
 
-pub struct AccountFutureRequirementsAlternativesElRef {
+#[allow(dead_code)]
+pub struct Account_FutureRequirementsAlternativesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountFutureRequirementsAlternativesElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> AccountFutureRequirementsAlternativesElRef {
-        AccountFutureRequirementsAlternativesElRef {
+impl terrars::Ref for Account_FutureRequirementsAlternativesRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_FutureRequirementsAlternativesRef {
+        Account_FutureRequirementsAlternativesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountFutureRequirementsAlternativesElRef {
+impl Account_FutureRequirementsAlternativesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6096,7 +6100,7 @@ impl AccountFutureRequirementsAlternativesElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountFutureRequirementsErrorsEl {
+pub struct Account_FutureRequirementsErrors {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     code: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -6105,7 +6109,7 @@ pub struct AccountFutureRequirementsErrorsEl {
     requirement: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl AccountFutureRequirementsErrorsEl {
+impl Account_FutureRequirementsErrors {
     #[doc = "Set the field `code`.\n"]
     pub fn set_code(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.code = std::option::Option::Some(v.into());
@@ -6125,8 +6129,8 @@ impl AccountFutureRequirementsErrorsEl {
     }
 }
 
-impl terrars::ToListMappable for AccountFutureRequirementsErrorsEl {
-    type O = terrars::BlockAssignable<AccountFutureRequirementsErrorsEl>;
+impl terrars::ToListMappable for Account_FutureRequirementsErrors {
+    type O = terrars::BlockAssignable<Account_FutureRequirementsErrors>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6137,11 +6141,11 @@ impl terrars::ToListMappable for AccountFutureRequirementsErrorsEl {
     }
 }
 
-pub struct BuildAccountFutureRequirementsErrorsEl {}
+pub struct BuildAccount_FutureRequirementsErrors {}
 
-impl BuildAccountFutureRequirementsErrorsEl {
-    pub fn build(self) -> AccountFutureRequirementsErrorsEl {
-        AccountFutureRequirementsErrorsEl {
+impl BuildAccount_FutureRequirementsErrors {
+    pub fn build(self) -> Account_FutureRequirementsErrors {
+        Account_FutureRequirementsErrors {
             code: core::default::Default::default(),
             reason: core::default::Default::default(),
             requirement: core::default::Default::default(),
@@ -6149,21 +6153,23 @@ impl BuildAccountFutureRequirementsErrorsEl {
     }
 }
 
-pub struct AccountFutureRequirementsErrorsElRef {
+#[allow(dead_code)]
+pub struct Account_FutureRequirementsErrorsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountFutureRequirementsErrorsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> AccountFutureRequirementsErrorsElRef {
-        AccountFutureRequirementsErrorsElRef {
+impl terrars::Ref for Account_FutureRequirementsErrorsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_FutureRequirementsErrorsRef {
+        Account_FutureRequirementsErrorsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountFutureRequirementsErrorsElRef {
+impl Account_FutureRequirementsErrorsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6185,14 +6191,14 @@ impl AccountFutureRequirementsErrorsElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountIndividualFutureRequirementsAlternativesEl {
+pub struct Account_IndividualFutureRequirementsAlternatives {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alternative_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     original_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
 }
 
-impl AccountIndividualFutureRequirementsAlternativesEl {
+impl Account_IndividualFutureRequirementsAlternatives {
     #[doc = "Set the field `alternative_fields_due`.\n"]
     pub fn set_alternative_fields_due(
         mut self,
@@ -6212,8 +6218,8 @@ impl AccountIndividualFutureRequirementsAlternativesEl {
     }
 }
 
-impl terrars::ToListMappable for AccountIndividualFutureRequirementsAlternativesEl {
-    type O = terrars::BlockAssignable<AccountIndividualFutureRequirementsAlternativesEl>;
+impl terrars::ToListMappable for Account_IndividualFutureRequirementsAlternatives {
+    type O = terrars::BlockAssignable<Account_IndividualFutureRequirementsAlternatives>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6224,35 +6230,37 @@ impl terrars::ToListMappable for AccountIndividualFutureRequirementsAlternatives
     }
 }
 
-pub struct BuildAccountIndividualFutureRequirementsAlternativesEl {}
+pub struct BuildAccount_IndividualFutureRequirementsAlternatives {}
 
-impl BuildAccountIndividualFutureRequirementsAlternativesEl {
-    pub fn build(self) -> AccountIndividualFutureRequirementsAlternativesEl {
-        AccountIndividualFutureRequirementsAlternativesEl {
+impl BuildAccount_IndividualFutureRequirementsAlternatives {
+    pub fn build(self) -> Account_IndividualFutureRequirementsAlternatives {
+        Account_IndividualFutureRequirementsAlternatives {
             alternative_fields_due: core::default::Default::default(),
             original_fields_due: core::default::Default::default(),
         }
     }
 }
 
-pub struct AccountIndividualFutureRequirementsAlternativesElRef {
+#[allow(dead_code)]
+pub struct Account_IndividualFutureRequirementsAlternativesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountIndividualFutureRequirementsAlternativesElRef {
+impl terrars::Ref for Account_IndividualFutureRequirementsAlternativesRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> AccountIndividualFutureRequirementsAlternativesElRef {
-        AccountIndividualFutureRequirementsAlternativesElRef {
+    ) -> Account_IndividualFutureRequirementsAlternativesRef {
+        Account_IndividualFutureRequirementsAlternativesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountIndividualFutureRequirementsAlternativesElRef {
+impl Account_IndividualFutureRequirementsAlternativesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6269,7 +6277,7 @@ impl AccountIndividualFutureRequirementsAlternativesElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountIndividualFutureRequirementsErrorsEl {
+pub struct Account_IndividualFutureRequirementsErrors {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     code: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -6278,7 +6286,7 @@ pub struct AccountIndividualFutureRequirementsErrorsEl {
     requirement: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl AccountIndividualFutureRequirementsErrorsEl {
+impl Account_IndividualFutureRequirementsErrors {
     #[doc = "Set the field `code`.\n"]
     pub fn set_code(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.code = std::option::Option::Some(v.into());
@@ -6298,8 +6306,8 @@ impl AccountIndividualFutureRequirementsErrorsEl {
     }
 }
 
-impl terrars::ToListMappable for AccountIndividualFutureRequirementsErrorsEl {
-    type O = terrars::BlockAssignable<AccountIndividualFutureRequirementsErrorsEl>;
+impl terrars::ToListMappable for Account_IndividualFutureRequirementsErrors {
+    type O = terrars::BlockAssignable<Account_IndividualFutureRequirementsErrors>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6310,11 +6318,11 @@ impl terrars::ToListMappable for AccountIndividualFutureRequirementsErrorsEl {
     }
 }
 
-pub struct BuildAccountIndividualFutureRequirementsErrorsEl {}
+pub struct BuildAccount_IndividualFutureRequirementsErrors {}
 
-impl BuildAccountIndividualFutureRequirementsErrorsEl {
-    pub fn build(self) -> AccountIndividualFutureRequirementsErrorsEl {
-        AccountIndividualFutureRequirementsErrorsEl {
+impl BuildAccount_IndividualFutureRequirementsErrors {
+    pub fn build(self) -> Account_IndividualFutureRequirementsErrors {
+        Account_IndividualFutureRequirementsErrors {
             code: core::default::Default::default(),
             reason: core::default::Default::default(),
             requirement: core::default::Default::default(),
@@ -6322,24 +6330,23 @@ impl BuildAccountIndividualFutureRequirementsErrorsEl {
     }
 }
 
-pub struct AccountIndividualFutureRequirementsErrorsElRef {
+#[allow(dead_code)]
+pub struct Account_IndividualFutureRequirementsErrorsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountIndividualFutureRequirementsErrorsElRef {
-    fn new(
-        shared: terrars::StackShared,
-        base: std::string::String,
-    ) -> AccountIndividualFutureRequirementsErrorsElRef {
-        AccountIndividualFutureRequirementsErrorsElRef {
+impl terrars::Ref for Account_IndividualFutureRequirementsErrorsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_IndividualFutureRequirementsErrorsRef {
+        Account_IndividualFutureRequirementsErrorsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountIndividualFutureRequirementsErrorsElRef {
+impl Account_IndividualFutureRequirementsErrorsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6361,14 +6368,14 @@ impl AccountIndividualFutureRequirementsErrorsElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountIndividualRequirementsAlternativesEl {
+pub struct Account_IndividualRequirementsAlternatives {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alternative_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     original_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
 }
 
-impl AccountIndividualRequirementsAlternativesEl {
+impl Account_IndividualRequirementsAlternatives {
     #[doc = "Set the field `alternative_fields_due`.\n"]
     pub fn set_alternative_fields_due(
         mut self,
@@ -6388,8 +6395,8 @@ impl AccountIndividualRequirementsAlternativesEl {
     }
 }
 
-impl terrars::ToListMappable for AccountIndividualRequirementsAlternativesEl {
-    type O = terrars::BlockAssignable<AccountIndividualRequirementsAlternativesEl>;
+impl terrars::ToListMappable for Account_IndividualRequirementsAlternatives {
+    type O = terrars::BlockAssignable<Account_IndividualRequirementsAlternatives>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6400,35 +6407,34 @@ impl terrars::ToListMappable for AccountIndividualRequirementsAlternativesEl {
     }
 }
 
-pub struct BuildAccountIndividualRequirementsAlternativesEl {}
+pub struct BuildAccount_IndividualRequirementsAlternatives {}
 
-impl BuildAccountIndividualRequirementsAlternativesEl {
-    pub fn build(self) -> AccountIndividualRequirementsAlternativesEl {
-        AccountIndividualRequirementsAlternativesEl {
+impl BuildAccount_IndividualRequirementsAlternatives {
+    pub fn build(self) -> Account_IndividualRequirementsAlternatives {
+        Account_IndividualRequirementsAlternatives {
             alternative_fields_due: core::default::Default::default(),
             original_fields_due: core::default::Default::default(),
         }
     }
 }
 
-pub struct AccountIndividualRequirementsAlternativesElRef {
+#[allow(dead_code)]
+pub struct Account_IndividualRequirementsAlternativesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountIndividualRequirementsAlternativesElRef {
-    fn new(
-        shared: terrars::StackShared,
-        base: std::string::String,
-    ) -> AccountIndividualRequirementsAlternativesElRef {
-        AccountIndividualRequirementsAlternativesElRef {
+impl terrars::Ref for Account_IndividualRequirementsAlternativesRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_IndividualRequirementsAlternativesRef {
+        Account_IndividualRequirementsAlternativesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountIndividualRequirementsAlternativesElRef {
+impl Account_IndividualRequirementsAlternativesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6445,7 +6451,7 @@ impl AccountIndividualRequirementsAlternativesElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountIndividualRequirementsErrorsEl {
+pub struct Account_IndividualRequirementsErrors {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     code: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -6454,7 +6460,7 @@ pub struct AccountIndividualRequirementsErrorsEl {
     requirement: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl AccountIndividualRequirementsErrorsEl {
+impl Account_IndividualRequirementsErrors {
     #[doc = "Set the field `code`.\n"]
     pub fn set_code(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.code = std::option::Option::Some(v.into());
@@ -6474,8 +6480,8 @@ impl AccountIndividualRequirementsErrorsEl {
     }
 }
 
-impl terrars::ToListMappable for AccountIndividualRequirementsErrorsEl {
-    type O = terrars::BlockAssignable<AccountIndividualRequirementsErrorsEl>;
+impl terrars::ToListMappable for Account_IndividualRequirementsErrors {
+    type O = terrars::BlockAssignable<Account_IndividualRequirementsErrors>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6486,11 +6492,11 @@ impl terrars::ToListMappable for AccountIndividualRequirementsErrorsEl {
     }
 }
 
-pub struct BuildAccountIndividualRequirementsErrorsEl {}
+pub struct BuildAccount_IndividualRequirementsErrors {}
 
-impl BuildAccountIndividualRequirementsErrorsEl {
-    pub fn build(self) -> AccountIndividualRequirementsErrorsEl {
-        AccountIndividualRequirementsErrorsEl {
+impl BuildAccount_IndividualRequirementsErrors {
+    pub fn build(self) -> Account_IndividualRequirementsErrors {
+        Account_IndividualRequirementsErrors {
             code: core::default::Default::default(),
             reason: core::default::Default::default(),
             requirement: core::default::Default::default(),
@@ -6498,21 +6504,23 @@ impl BuildAccountIndividualRequirementsErrorsEl {
     }
 }
 
-pub struct AccountIndividualRequirementsErrorsElRef {
+#[allow(dead_code)]
+pub struct Account_IndividualRequirementsErrorsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountIndividualRequirementsErrorsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> AccountIndividualRequirementsErrorsElRef {
-        AccountIndividualRequirementsErrorsElRef {
+impl terrars::Ref for Account_IndividualRequirementsErrorsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_IndividualRequirementsErrorsRef {
+        Account_IndividualRequirementsErrorsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountIndividualRequirementsErrorsElRef {
+impl Account_IndividualRequirementsErrorsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6534,14 +6542,14 @@ impl AccountIndividualRequirementsErrorsElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountRequirementsAlternativesEl {
+pub struct Account_RequirementsAlternatives {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alternative_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     original_fields_due: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
 }
 
-impl AccountRequirementsAlternativesEl {
+impl Account_RequirementsAlternatives {
     #[doc = "Set the field `alternative_fields_due`.\n"]
     pub fn set_alternative_fields_due(
         mut self,
@@ -6561,8 +6569,8 @@ impl AccountRequirementsAlternativesEl {
     }
 }
 
-impl terrars::ToListMappable for AccountRequirementsAlternativesEl {
-    type O = terrars::BlockAssignable<AccountRequirementsAlternativesEl>;
+impl terrars::ToListMappable for Account_RequirementsAlternatives {
+    type O = terrars::BlockAssignable<Account_RequirementsAlternatives>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6573,32 +6581,34 @@ impl terrars::ToListMappable for AccountRequirementsAlternativesEl {
     }
 }
 
-pub struct BuildAccountRequirementsAlternativesEl {}
+pub struct BuildAccount_RequirementsAlternatives {}
 
-impl BuildAccountRequirementsAlternativesEl {
-    pub fn build(self) -> AccountRequirementsAlternativesEl {
-        AccountRequirementsAlternativesEl {
+impl BuildAccount_RequirementsAlternatives {
+    pub fn build(self) -> Account_RequirementsAlternatives {
+        Account_RequirementsAlternatives {
             alternative_fields_due: core::default::Default::default(),
             original_fields_due: core::default::Default::default(),
         }
     }
 }
 
-pub struct AccountRequirementsAlternativesElRef {
+#[allow(dead_code)]
+pub struct Account_RequirementsAlternativesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountRequirementsAlternativesElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> AccountRequirementsAlternativesElRef {
-        AccountRequirementsAlternativesElRef {
+impl terrars::Ref for Account_RequirementsAlternativesRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_RequirementsAlternativesRef {
+        Account_RequirementsAlternativesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountRequirementsAlternativesElRef {
+impl Account_RequirementsAlternativesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6615,7 +6625,7 @@ impl AccountRequirementsAlternativesElRef {
 }
 
 #[derive(Serialize)]
-pub struct AccountRequirementsErrorsEl {
+pub struct Account_RequirementsErrors {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     code: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -6624,7 +6634,7 @@ pub struct AccountRequirementsErrorsEl {
     requirement: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl AccountRequirementsErrorsEl {
+impl Account_RequirementsErrors {
     #[doc = "Set the field `code`.\n"]
     pub fn set_code(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.code = std::option::Option::Some(v.into());
@@ -6644,8 +6654,8 @@ impl AccountRequirementsErrorsEl {
     }
 }
 
-impl terrars::ToListMappable for AccountRequirementsErrorsEl {
-    type O = terrars::BlockAssignable<AccountRequirementsErrorsEl>;
+impl terrars::ToListMappable for Account_RequirementsErrors {
+    type O = terrars::BlockAssignable<Account_RequirementsErrors>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6656,11 +6666,11 @@ impl terrars::ToListMappable for AccountRequirementsErrorsEl {
     }
 }
 
-pub struct BuildAccountRequirementsErrorsEl {}
+pub struct BuildAccount_RequirementsErrors {}
 
-impl BuildAccountRequirementsErrorsEl {
-    pub fn build(self) -> AccountRequirementsErrorsEl {
-        AccountRequirementsErrorsEl {
+impl BuildAccount_RequirementsErrors {
+    pub fn build(self) -> Account_RequirementsErrors {
+        Account_RequirementsErrors {
             code: core::default::Default::default(),
             reason: core::default::Default::default(),
             requirement: core::default::Default::default(),
@@ -6668,21 +6678,23 @@ impl BuildAccountRequirementsErrorsEl {
     }
 }
 
-pub struct AccountRequirementsErrorsElRef {
+#[allow(dead_code)]
+pub struct Account_RequirementsErrorsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for AccountRequirementsErrorsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> AccountRequirementsErrorsElRef {
-        AccountRequirementsErrorsElRef {
+impl terrars::Ref for Account_RequirementsErrorsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Account_RequirementsErrorsRef {
+        Account_RequirementsErrorsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl AccountRequirementsErrorsElRef {
+impl Account_RequirementsErrorsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }

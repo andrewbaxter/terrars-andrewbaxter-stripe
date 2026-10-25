@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct PromotionCodeData {
+struct PromotionCodeData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -34,14 +36,14 @@ struct PromotionCodeData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     restrictions_minimum_amount_currency: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    restrictions_currency_options: std::option::Option<std::vec::Vec<PromotionCodeRestrictionsCurrencyOptionsEl>>,
+    restrictions_currency_options: std::option::Option<std::vec::Vec<PromotionCode_RestrictionsCurrencyOptions>>,
     dynamic: PromotionCodeDynamic,
 }
 
 struct PromotionCode_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<PromotionCodeData>,
+    data: std::cell::RefCell<PromotionCodeData_>,
 }
 
 #[derive(Clone)]
@@ -196,7 +198,7 @@ impl PromotionCode {
     #[doc = "Set the field `restrictions_currency_options`.\n"]
     pub fn set_restrictions_currency_options(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<PromotionCodeRestrictionsCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<PromotionCode_RestrictionsCurrencyOptions>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -292,7 +294,7 @@ impl PromotionCode {
     }
 
     #[doc = "Get a reference to the value of field `restrictions_currency_options` after provisioning.\n"]
-    pub fn restrictions_currency_options(&self) -> terrars::ListRef<PromotionCodeRestrictionsCurrencyOptionsElRef> {
+    pub fn restrictions_currency_options(&self) -> terrars::ListRef<PromotionCode_RestrictionsCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.restrictions_currency_options", self.extract_ref()))
     }
 }
@@ -339,7 +341,7 @@ impl BuildPromotionCode {
         let out = PromotionCode(std::rc::Rc::new(PromotionCode_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(PromotionCodeData {
+            data: std::cell::RefCell::new(PromotionCodeData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -468,19 +470,19 @@ impl PromotionCodeRef {
     }
 
     #[doc = "Get a reference to the value of field `restrictions_currency_options` after provisioning.\n"]
-    pub fn restrictions_currency_options(&self) -> terrars::ListRef<PromotionCodeRestrictionsCurrencyOptionsElRef> {
+    pub fn restrictions_currency_options(&self) -> terrars::ListRef<PromotionCode_RestrictionsCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.restrictions_currency_options", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct PromotionCodeRestrictionsCurrencyOptionsEl {
+pub struct PromotionCode_RestrictionsCurrencyOptions {
     key: terrars::PrimField<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     minimum_amount: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl PromotionCodeRestrictionsCurrencyOptionsEl {
+impl PromotionCode_RestrictionsCurrencyOptions {
     #[doc =
         "Set the field `minimum_amount`.\nMinimum amount required to redeem this Promotion Code into a Coupon (e.g., a purchase must be $100 or more to work)."]
     pub fn set_minimum_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
@@ -489,8 +491,8 @@ impl PromotionCodeRestrictionsCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for PromotionCodeRestrictionsCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<PromotionCodeRestrictionsCurrencyOptionsEl>;
+impl terrars::ToListMappable for PromotionCode_RestrictionsCurrencyOptions {
+    type O = terrars::BlockAssignable<PromotionCode_RestrictionsCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -501,35 +503,37 @@ impl terrars::ToListMappable for PromotionCodeRestrictionsCurrencyOptionsEl {
     }
 }
 
-pub struct BuildPromotionCodeRestrictionsCurrencyOptionsEl {
+pub struct BuildPromotionCode_RestrictionsCurrencyOptions {
     #[doc = "Key for this field in parent map (synthetic to work around Terraform limitations)"]
     pub key: terrars::PrimField<std::string::String>,
 }
 
-impl BuildPromotionCodeRestrictionsCurrencyOptionsEl {
-    pub fn build(self) -> PromotionCodeRestrictionsCurrencyOptionsEl {
-        PromotionCodeRestrictionsCurrencyOptionsEl {
+impl BuildPromotionCode_RestrictionsCurrencyOptions {
+    pub fn build(self) -> PromotionCode_RestrictionsCurrencyOptions {
+        PromotionCode_RestrictionsCurrencyOptions {
             key: self.key,
             minimum_amount: core::default::Default::default(),
         }
     }
 }
 
-pub struct PromotionCodeRestrictionsCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct PromotionCode_RestrictionsCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PromotionCodeRestrictionsCurrencyOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PromotionCodeRestrictionsCurrencyOptionsElRef {
-        PromotionCodeRestrictionsCurrencyOptionsElRef {
+impl terrars::Ref for PromotionCode_RestrictionsCurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> PromotionCode_RestrictionsCurrencyOptionsRef {
+        PromotionCode_RestrictionsCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PromotionCodeRestrictionsCurrencyOptionsElRef {
+impl PromotionCode_RestrictionsCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -551,5 +555,5 @@ impl PromotionCodeRestrictionsCurrencyOptionsElRef {
 struct PromotionCodeDynamic {
     restrictions_currency_options: std
     ::option
-    ::Option<terrars::DynamicBlock<PromotionCodeRestrictionsCurrencyOptionsEl>>,
+    ::Option<terrars::DynamicBlock<PromotionCode_RestrictionsCurrencyOptions>>,
 }

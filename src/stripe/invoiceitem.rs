@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct InvoiceitemData {
+struct InvoiceitemData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -60,14 +62,14 @@ struct InvoiceitemData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    discounts: std::option::Option<std::vec::Vec<InvoiceitemDiscountsEl>>,
+    discounts: std::option::Option<std::vec::Vec<Invoiceitem_Discounts>>,
     dynamic: InvoiceitemDynamic,
 }
 
 struct Invoiceitem_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<InvoiceitemData>,
+    data: std::cell::RefCell<InvoiceitemData_>,
 }
 
 #[derive(Clone)]
@@ -307,7 +309,7 @@ impl Invoiceitem {
     }
 
     #[doc = "Set the field `discounts`.\n"]
-    pub fn set_discounts(self, v: impl std::convert::Into<terrars::BlockAssignable<InvoiceitemDiscountsEl>>) -> Self {
+    pub fn set_discounts(self, v: impl std::convert::Into<terrars::BlockAssignable<Invoiceitem_Discounts>>) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
                 self.0.data.borrow_mut().discounts = std::option::Option::Some(v);
@@ -483,7 +485,7 @@ impl Invoiceitem {
     }
 
     #[doc = "Get a reference to the value of field `discounts` after provisioning.\n"]
-    pub fn discounts(&self) -> terrars::ListRef<InvoiceitemDiscountsElRef> {
+    pub fn discounts(&self) -> terrars::ListRef<Invoiceitem_DiscountsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.discounts", self.extract_ref()))
     }
 }
@@ -530,7 +532,7 @@ impl BuildInvoiceitem {
         let out = Invoiceitem(std::rc::Rc::new(Invoiceitem_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(InvoiceitemData {
+            data: std::cell::RefCell::new(InvoiceitemData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -753,20 +755,20 @@ impl InvoiceitemRef {
     }
 
     #[doc = "Get a reference to the value of field `discounts` after provisioning.\n"]
-    pub fn discounts(&self) -> terrars::ListRef<InvoiceitemDiscountsElRef> {
+    pub fn discounts(&self) -> terrars::ListRef<Invoiceitem_DiscountsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.discounts", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct InvoiceitemDiscountsEl {
+pub struct Invoiceitem_Discounts {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     coupon: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     discount: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl InvoiceitemDiscountsEl {
+impl Invoiceitem_Discounts {
     #[doc = "Set the field `coupon`.\n"]
     pub fn set_coupon(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.coupon = std::option::Option::Some(v.into());
@@ -780,8 +782,8 @@ impl InvoiceitemDiscountsEl {
     }
 }
 
-impl terrars::ToListMappable for InvoiceitemDiscountsEl {
-    type O = terrars::BlockAssignable<InvoiceitemDiscountsEl>;
+impl terrars::ToListMappable for Invoiceitem_Discounts {
+    type O = terrars::BlockAssignable<Invoiceitem_Discounts>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -792,32 +794,34 @@ impl terrars::ToListMappable for InvoiceitemDiscountsEl {
     }
 }
 
-pub struct BuildInvoiceitemDiscountsEl {}
+pub struct BuildInvoiceitem_Discounts {}
 
-impl BuildInvoiceitemDiscountsEl {
-    pub fn build(self) -> InvoiceitemDiscountsEl {
-        InvoiceitemDiscountsEl {
+impl BuildInvoiceitem_Discounts {
+    pub fn build(self) -> Invoiceitem_Discounts {
+        Invoiceitem_Discounts {
             coupon: core::default::Default::default(),
             discount: core::default::Default::default(),
         }
     }
 }
 
-pub struct InvoiceitemDiscountsElRef {
+#[allow(dead_code)]
+pub struct Invoiceitem_DiscountsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for InvoiceitemDiscountsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> InvoiceitemDiscountsElRef {
-        InvoiceitemDiscountsElRef {
+impl terrars::Ref for Invoiceitem_DiscountsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Invoiceitem_DiscountsRef {
+        Invoiceitem_DiscountsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl InvoiceitemDiscountsElRef {
+impl Invoiceitem_DiscountsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -894,5 +898,5 @@ impl InvoiceitemDiscountsElRef {
 
 #[derive(Serialize, Default)]
 struct InvoiceitemDynamic {
-    discounts: std::option::Option<terrars::DynamicBlock<InvoiceitemDiscountsEl>>,
+    discounts: std::option::Option<terrars::DynamicBlock<Invoiceitem_Discounts>>,
 }

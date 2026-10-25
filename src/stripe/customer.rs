@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct CustomerData {
+struct CustomerData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -85,16 +87,16 @@ struct CustomerData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     test_clock: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    invoice_settings_custom_fields: std::option::Option<std::vec::Vec<CustomerInvoiceSettingsCustomFieldsEl>>,
+    invoice_settings_custom_fields: std::option::Option<std::vec::Vec<Customer_InvoiceSettingsCustomFields>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tax_id_data: std::option::Option<std::vec::Vec<CustomerTaxIdDataEl>>,
+    tax_id_data: std::option::Option<std::vec::Vec<Customer_TaxIdData>>,
     dynamic: CustomerDynamic,
 }
 
 struct Customer_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<CustomerData>,
+    data: std::cell::RefCell<CustomerData_>,
 }
 
 #[derive(Clone)]
@@ -438,7 +440,7 @@ impl Customer {
     #[doc = "Set the field `invoice_settings_custom_fields`.\n"]
     pub fn set_invoice_settings_custom_fields(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<CustomerInvoiceSettingsCustomFieldsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<Customer_InvoiceSettingsCustomFields>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -452,7 +454,7 @@ impl Customer {
     }
 
     #[doc = "Set the field `tax_id_data`.\n"]
-    pub fn set_tax_id_data(self, v: impl std::convert::Into<terrars::BlockAssignable<CustomerTaxIdDataEl>>) -> Self {
+    pub fn set_tax_id_data(self, v: impl std::convert::Into<terrars::BlockAssignable<Customer_TaxIdData>>) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
                 self.0.data.borrow_mut().tax_id_data = std::option::Option::Some(v);
@@ -608,7 +610,7 @@ impl Customer {
 
     #[doc =
         "Get a reference to the value of field `discount_coupon_currency_options` after provisioning.\nCoupons defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://stripe.com/docs/currencies)."]
-    pub fn discount_coupon_currency_options(&self) -> terrars::ListRef<CustomerDiscountCouponCurrencyOptionsElRef> {
+    pub fn discount_coupon_currency_options(&self) -> terrars::ListRef<Customer_DiscountCouponCurrencyOptionsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.discount_coupon_currency_options", self.extract_ref()),
@@ -927,7 +929,7 @@ impl Customer {
 
     #[doc =
         "Get a reference to the value of field `subscriptions_data` after provisioning.\nDetails about each object."]
-    pub fn subscriptions_data(&self) -> terrars::ListRef<CustomerSubscriptionsDataElRef> {
+    pub fn subscriptions_data(&self) -> terrars::ListRef<Customer_SubscriptionsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.subscriptions_data", self.extract_ref()))
     }
 
@@ -962,7 +964,7 @@ impl Customer {
     }
 
     #[doc = "Get a reference to the value of field `tax_ids_data` after provisioning.\nDetails about each object."]
-    pub fn tax_ids_data(&self) -> terrars::ListRef<CustomerTaxIdsDataElRef> {
+    pub fn tax_ids_data(&self) -> terrars::ListRef<Customer_TaxIdsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_ids_data", self.extract_ref()))
     }
 
@@ -1015,7 +1017,7 @@ impl Customer {
     }
 
     #[doc = "Get a reference to the value of field `invoice_settings_custom_fields` after provisioning.\n"]
-    pub fn invoice_settings_custom_fields(&self) -> terrars::ListRef<CustomerInvoiceSettingsCustomFieldsElRef> {
+    pub fn invoice_settings_custom_fields(&self) -> terrars::ListRef<Customer_InvoiceSettingsCustomFieldsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.invoice_settings_custom_fields", self.extract_ref()),
@@ -1023,7 +1025,7 @@ impl Customer {
     }
 
     #[doc = "Get a reference to the value of field `tax_id_data` after provisioning.\n"]
-    pub fn tax_id_data(&self) -> terrars::ListRef<CustomerTaxIdDataElRef> {
+    pub fn tax_id_data(&self) -> terrars::ListRef<Customer_TaxIdDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_id_data", self.extract_ref()))
     }
 }
@@ -1068,7 +1070,7 @@ impl BuildCustomer {
         let out = Customer(std::rc::Rc::new(Customer_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(CustomerData {
+            data: std::cell::RefCell::new(CustomerData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -1284,7 +1286,7 @@ impl CustomerRef {
 
     #[doc =
         "Get a reference to the value of field `discount_coupon_currency_options` after provisioning.\nCoupons defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://stripe.com/docs/currencies)."]
-    pub fn discount_coupon_currency_options(&self) -> terrars::ListRef<CustomerDiscountCouponCurrencyOptionsElRef> {
+    pub fn discount_coupon_currency_options(&self) -> terrars::ListRef<Customer_DiscountCouponCurrencyOptionsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.discount_coupon_currency_options", self.extract_ref()),
@@ -1603,7 +1605,7 @@ impl CustomerRef {
 
     #[doc =
         "Get a reference to the value of field `subscriptions_data` after provisioning.\nDetails about each object."]
-    pub fn subscriptions_data(&self) -> terrars::ListRef<CustomerSubscriptionsDataElRef> {
+    pub fn subscriptions_data(&self) -> terrars::ListRef<Customer_SubscriptionsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.subscriptions_data", self.extract_ref()))
     }
 
@@ -1638,7 +1640,7 @@ impl CustomerRef {
     }
 
     #[doc = "Get a reference to the value of field `tax_ids_data` after provisioning.\nDetails about each object."]
-    pub fn tax_ids_data(&self) -> terrars::ListRef<CustomerTaxIdsDataElRef> {
+    pub fn tax_ids_data(&self) -> terrars::ListRef<Customer_TaxIdsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_ids_data", self.extract_ref()))
     }
 
@@ -1691,7 +1693,7 @@ impl CustomerRef {
     }
 
     #[doc = "Get a reference to the value of field `invoice_settings_custom_fields` after provisioning.\n"]
-    pub fn invoice_settings_custom_fields(&self) -> terrars::ListRef<CustomerInvoiceSettingsCustomFieldsElRef> {
+    pub fn invoice_settings_custom_fields(&self) -> terrars::ListRef<Customer_InvoiceSettingsCustomFieldsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.invoice_settings_custom_fields", self.extract_ref()),
@@ -1699,20 +1701,20 @@ impl CustomerRef {
     }
 
     #[doc = "Get a reference to the value of field `tax_id_data` after provisioning.\n"]
-    pub fn tax_id_data(&self) -> terrars::ListRef<CustomerTaxIdDataElRef> {
+    pub fn tax_id_data(&self) -> terrars::ListRef<Customer_TaxIdDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_id_data", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct CustomerDiscountCouponCurrencyOptionsEl {
+pub struct Customer_DiscountCouponCurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     amount_off: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     key: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerDiscountCouponCurrencyOptionsEl {
+impl Customer_DiscountCouponCurrencyOptions {
     #[doc = "Set the field `amount_off`.\n"]
     pub fn set_amount_off(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.amount_off = std::option::Option::Some(v.into());
@@ -1726,8 +1728,8 @@ impl CustomerDiscountCouponCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerDiscountCouponCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<CustomerDiscountCouponCurrencyOptionsEl>;
+impl terrars::ToListMappable for Customer_DiscountCouponCurrencyOptions {
+    type O = terrars::BlockAssignable<Customer_DiscountCouponCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1738,32 +1740,34 @@ impl terrars::ToListMappable for CustomerDiscountCouponCurrencyOptionsEl {
     }
 }
 
-pub struct BuildCustomerDiscountCouponCurrencyOptionsEl {}
+pub struct BuildCustomer_DiscountCouponCurrencyOptions {}
 
-impl BuildCustomerDiscountCouponCurrencyOptionsEl {
-    pub fn build(self) -> CustomerDiscountCouponCurrencyOptionsEl {
-        CustomerDiscountCouponCurrencyOptionsEl {
+impl BuildCustomer_DiscountCouponCurrencyOptions {
+    pub fn build(self) -> Customer_DiscountCouponCurrencyOptions {
+        Customer_DiscountCouponCurrencyOptions {
             amount_off: core::default::Default::default(),
             key: core::default::Default::default(),
         }
     }
 }
 
-pub struct CustomerDiscountCouponCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Customer_DiscountCouponCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerDiscountCouponCurrencyOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerDiscountCouponCurrencyOptionsElRef {
-        CustomerDiscountCouponCurrencyOptionsElRef {
+impl terrars::Ref for Customer_DiscountCouponCurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_DiscountCouponCurrencyOptionsRef {
+        Customer_DiscountCouponCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerDiscountCouponCurrencyOptionsElRef {
+impl Customer_DiscountCouponCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1780,7 +1784,7 @@ impl CustomerDiscountCouponCurrencyOptionsElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElDefaultTaxRatesEl {
+pub struct Customer_SubscriptionsData_DefaultTaxRates {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     active: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1811,7 +1815,7 @@ pub struct CustomerSubscriptionsDataElDefaultTaxRatesEl {
     tax_type: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElDefaultTaxRatesEl {
+impl Customer_SubscriptionsData_DefaultTaxRates {
     #[doc = "Set the field `active`.\n"]
     pub fn set_active(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.active = std::option::Option::Some(v.into());
@@ -1900,8 +1904,8 @@ impl CustomerSubscriptionsDataElDefaultTaxRatesEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElDefaultTaxRatesEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElDefaultTaxRatesEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_DefaultTaxRates {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_DefaultTaxRates>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1912,11 +1916,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElDefaultTaxRatesEl {
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElDefaultTaxRatesEl {}
+pub struct BuildCustomer_SubscriptionsData_DefaultTaxRates {}
 
-impl BuildCustomerSubscriptionsDataElDefaultTaxRatesEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElDefaultTaxRatesEl {
-        CustomerSubscriptionsDataElDefaultTaxRatesEl {
+impl BuildCustomer_SubscriptionsData_DefaultTaxRates {
+    pub fn build(self) -> Customer_SubscriptionsData_DefaultTaxRates {
+        Customer_SubscriptionsData_DefaultTaxRates {
             active: core::default::Default::default(),
             country: core::default::Default::default(),
             created: core::default::Default::default(),
@@ -1935,24 +1939,23 @@ impl BuildCustomerSubscriptionsDataElDefaultTaxRatesEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElDefaultTaxRatesElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_DefaultTaxRatesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElDefaultTaxRatesElRef {
-    fn new(
-        shared: terrars::StackShared,
-        base: std::string::String,
-    ) -> CustomerSubscriptionsDataElDefaultTaxRatesElRef {
-        CustomerSubscriptionsDataElDefaultTaxRatesElRef {
+impl terrars::Ref for Customer_SubscriptionsData_DefaultTaxRatesRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_SubscriptionsData_DefaultTaxRatesRef {
+        Customer_SubscriptionsData_DefaultTaxRatesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElDefaultTaxRatesElRef {
+impl Customer_SubscriptionsData_DefaultTaxRatesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2029,14 +2032,14 @@ impl CustomerSubscriptionsDataElDefaultTaxRatesElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
+pub struct Customer_SubscriptionsData_DiscountCouponCurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     amount_off: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     key: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
+impl Customer_SubscriptionsData_DiscountCouponCurrencyOptions {
     #[doc = "Set the field `amount_off`.\n"]
     pub fn set_amount_off(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.amount_off = std::option::Option::Some(v.into());
@@ -2050,8 +2053,8 @@ impl CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_DiscountCouponCurrencyOptions {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_DiscountCouponCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -2062,35 +2065,37 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElDiscountCouponCurren
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {}
+pub struct BuildCustomer_SubscriptionsData_DiscountCouponCurrencyOptions {}
 
-impl BuildCustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
-        CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl {
+impl BuildCustomer_SubscriptionsData_DiscountCouponCurrencyOptions {
+    pub fn build(self) -> Customer_SubscriptionsData_DiscountCouponCurrencyOptions {
+        Customer_SubscriptionsData_DiscountCouponCurrencyOptions {
             amount_off: core::default::Default::default(),
             key: core::default::Default::default(),
         }
     }
 }
 
-pub struct CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
+impl terrars::Ref for Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
-        CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
+    ) -> Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef {
+        Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
+impl Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2107,7 +2112,7 @@ impl CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
+pub struct Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2120,7 +2125,7 @@ pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
     up_to: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
+impl Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
     #[doc = "Set the field `flat_amount`.\n"]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -2158,8 +2163,8 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -2170,11 +2175,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceCurr
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {}
+pub struct BuildCustomer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {}
 
-impl BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
-        CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
+impl BuildCustomer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
+    pub fn build(self) -> Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
+        Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -2184,24 +2189,26 @@ impl BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
+impl terrars::Ref for Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
-        CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
+    ) -> Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef {
+        Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
+impl Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2233,7 +2240,7 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
+pub struct Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2245,14 +2252,14 @@ pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     tax_behavior: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tiers: std::option::Option<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl>>,
+    tiers: std::option::Option<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
+impl Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
     #[doc = "Set the field `custom_unit_amount_maximum`.\n"]
     pub fn set_custom_unit_amount_maximum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.custom_unit_amount_maximum = std::option::Option::Some(v.into());
@@ -2291,7 +2298,7 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
 
                     std
                     ::convert
-                    ::Into<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersEl>>,
+                    ::Into<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_Tiers>>,
     ) -> Self {
         self.tiers = std::option::Option::Some(v.into());
         self
@@ -2313,8 +2320,8 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -2325,11 +2332,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceCurr
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {}
+pub struct BuildCustomer_SubscriptionsData_ItemsData_PriceCurrencyOptions {}
 
-impl BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
-        CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
+impl BuildCustomer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
+    pub fn build(self) -> Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
+        Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions {
             custom_unit_amount_maximum: core::default::Default::default(),
             custom_unit_amount_minimum: core::default::Default::default(),
             custom_unit_amount_preset: core::default::Default::default(),
@@ -2342,24 +2349,26 @@ impl BuildCustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
+impl terrars::Ref for Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
-        CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
+    ) -> Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef {
+        Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
+impl Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2390,7 +2399,7 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
     }
 
@@ -2406,7 +2415,7 @@ impl CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
+pub struct Customer_SubscriptionsData_ItemsData_PriceTiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2419,7 +2428,7 @@ pub struct CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
     up_to: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
+impl Customer_SubscriptionsData_ItemsData_PriceTiers {
     #[doc = "Set the field `flat_amount`.\n"]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -2457,8 +2466,8 @@ impl CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElItemsDataElPriceTiersEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_ItemsData_PriceTiers {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_ItemsData_PriceTiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -2469,11 +2478,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElPriceTier
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElItemsDataElPriceTiersEl {}
+pub struct BuildCustomer_SubscriptionsData_ItemsData_PriceTiers {}
 
-impl BuildCustomerSubscriptionsDataElItemsDataElPriceTiersEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
-        CustomerSubscriptionsDataElItemsDataElPriceTiersEl {
+impl BuildCustomer_SubscriptionsData_ItemsData_PriceTiers {
+    pub fn build(self) -> Customer_SubscriptionsData_ItemsData_PriceTiers {
+        Customer_SubscriptionsData_ItemsData_PriceTiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -2483,24 +2492,26 @@ impl BuildCustomerSubscriptionsDataElItemsDataElPriceTiersEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_ItemsData_PriceTiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
+impl terrars::Ref for Customer_SubscriptionsData_ItemsData_PriceTiersRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
-        CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
+    ) -> Customer_SubscriptionsData_ItemsData_PriceTiersRef {
+        Customer_SubscriptionsData_ItemsData_PriceTiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
+impl Customer_SubscriptionsData_ItemsData_PriceTiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2532,7 +2543,7 @@ impl CustomerSubscriptionsDataElItemsDataElPriceTiersElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
+pub struct Customer_SubscriptionsData_ItemsData_TaxRates {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     active: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2563,7 +2574,7 @@ pub struct CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
     tax_type: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
+impl Customer_SubscriptionsData_ItemsData_TaxRates {
     #[doc = "Set the field `active`.\n"]
     pub fn set_active(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.active = std::option::Option::Some(v.into());
@@ -2652,8 +2663,8 @@ impl CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElItemsDataElTaxRatesEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_ItemsData_TaxRates {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_ItemsData_TaxRates>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -2664,11 +2675,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataElTaxRatesE
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElItemsDataElTaxRatesEl {}
+pub struct BuildCustomer_SubscriptionsData_ItemsData_TaxRates {}
 
-impl BuildCustomerSubscriptionsDataElItemsDataElTaxRatesEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
-        CustomerSubscriptionsDataElItemsDataElTaxRatesEl {
+impl BuildCustomer_SubscriptionsData_ItemsData_TaxRates {
+    pub fn build(self) -> Customer_SubscriptionsData_ItemsData_TaxRates {
+        Customer_SubscriptionsData_ItemsData_TaxRates {
             active: core::default::Default::default(),
             country: core::default::Default::default(),
             created: core::default::Default::default(),
@@ -2687,24 +2698,26 @@ impl BuildCustomerSubscriptionsDataElItemsDataElTaxRatesEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_ItemsData_TaxRatesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
+impl terrars::Ref for Customer_SubscriptionsData_ItemsData_TaxRatesRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
-        CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
+    ) -> Customer_SubscriptionsData_ItemsData_TaxRatesRef {
+        Customer_SubscriptionsData_ItemsData_TaxRatesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
+impl Customer_SubscriptionsData_ItemsData_TaxRatesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -2781,7 +2794,7 @@ impl CustomerSubscriptionsDataElItemsDataElTaxRatesElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElItemsDataEl {
+pub struct Customer_SubscriptionsData_ItemsData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     billing_thresholds_usage_gte: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2803,7 +2816,7 @@ pub struct CustomerSubscriptionsDataElItemsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_currency_options: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2835,7 +2848,7 @@ pub struct CustomerSubscriptionsDataElItemsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_tax_behavior: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    price_tiers: std::option::Option<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceTiersEl>>,
+    price_tiers: std::option::Option<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceTiers>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_tiers_mode: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -2853,10 +2866,10 @@ pub struct CustomerSubscriptionsDataElItemsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     subscription: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tax_rates: std::option::Option<terrars::ListField<CustomerSubscriptionsDataElItemsDataElTaxRatesEl>>,
+    tax_rates: std::option::Option<terrars::ListField<Customer_SubscriptionsData_ItemsData_TaxRates>>,
 }
 
-impl CustomerSubscriptionsDataElItemsDataEl {
+impl Customer_SubscriptionsData_ItemsData {
     #[doc = "Set the field `billing_thresholds_usage_gte`.\n"]
     pub fn set_billing_thresholds_usage_gte(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.billing_thresholds_usage_gte = std::option::Option::Some(v.into());
@@ -2920,7 +2933,7 @@ impl CustomerSubscriptionsDataElItemsDataEl {
     #[doc = "Set the field `price_currency_options`.\n"]
     pub fn set_price_currency_options(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptions>>,
     ) -> Self {
         self.price_currency_options = std::option::Option::Some(v.into());
         self
@@ -3034,7 +3047,7 @@ impl CustomerSubscriptionsDataElItemsDataEl {
     #[doc = "Set the field `price_tiers`.\n"]
     pub fn set_price_tiers(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElItemsDataElPriceTiersEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_ItemsData_PriceTiers>>,
     ) -> Self {
         self.price_tiers = std::option::Option::Some(v.into());
         self
@@ -3100,15 +3113,15 @@ impl CustomerSubscriptionsDataElItemsDataEl {
     #[doc = "Set the field `tax_rates`.\n"]
     pub fn set_tax_rates(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElItemsDataElTaxRatesEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_ItemsData_TaxRates>>,
     ) -> Self {
         self.tax_rates = std::option::Option::Some(v.into());
         self
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElItemsDataEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_ItemsData {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_ItemsData>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -3119,11 +3132,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElItemsDataEl {
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElItemsDataEl {}
+pub struct BuildCustomer_SubscriptionsData_ItemsData {}
 
-impl BuildCustomerSubscriptionsDataElItemsDataEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElItemsDataEl {
-        CustomerSubscriptionsDataElItemsDataEl {
+impl BuildCustomer_SubscriptionsData_ItemsData {
+    pub fn build(self) -> Customer_SubscriptionsData_ItemsData {
+        Customer_SubscriptionsData_ItemsData {
             billing_thresholds_usage_gte: core::default::Default::default(),
             created: core::default::Default::default(),
             id: core::default::Default::default(),
@@ -3163,21 +3176,23 @@ impl BuildCustomerSubscriptionsDataElItemsDataEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElItemsDataElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_ItemsDataRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElItemsDataElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerSubscriptionsDataElItemsDataElRef {
-        CustomerSubscriptionsDataElItemsDataElRef {
+impl terrars::Ref for Customer_SubscriptionsData_ItemsDataRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_SubscriptionsData_ItemsDataRef {
+        Customer_SubscriptionsData_ItemsDataRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElItemsDataElRef {
+impl Customer_SubscriptionsData_ItemsDataRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -3230,7 +3245,7 @@ impl CustomerSubscriptionsDataElItemsDataElRef {
     #[doc = "Get a reference to the value of field `price_currency_options` after provisioning.\n"]
     pub fn price_currency_options(
         &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElItemsDataElPriceCurrencyOptionsElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_ItemsData_PriceCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.price_currency_options", self.base))
     }
 
@@ -3310,7 +3325,7 @@ impl CustomerSubscriptionsDataElItemsDataElRef {
     }
 
     #[doc = "Get a reference to the value of field `price_tiers` after provisioning.\n"]
-    pub fn price_tiers(&self) -> terrars::ListRef<CustomerSubscriptionsDataElItemsDataElPriceTiersElRef> {
+    pub fn price_tiers(&self) -> terrars::ListRef<Customer_SubscriptionsData_ItemsData_PriceTiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.price_tiers", self.base))
     }
 
@@ -3355,13 +3370,13 @@ impl CustomerSubscriptionsDataElItemsDataElRef {
     }
 
     #[doc = "Get a reference to the value of field `tax_rates` after provisioning.\n"]
-    pub fn tax_rates(&self) -> terrars::ListRef<CustomerSubscriptionsDataElItemsDataElTaxRatesElRef> {
+    pub fn tax_rates(&self) -> terrars::ListRef<Customer_SubscriptionsData_ItemsData_TaxRatesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_rates", self.base))
     }
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -3374,7 +3389,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurre
     up_to: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
     #[doc = "Set the field `flat_amount`.\n"]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -3412,11 +3427,10 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
     }
 }
 
-impl terrars
-::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
+impl terrars::ToListMappable for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
     type O =
         terrars
-        ::BlockAssignable<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl>;
+        ::BlockAssignable<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -3427,11 +3441,11 @@ impl terrars
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {}
+pub struct BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {}
 
-impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl {
+impl BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
+    pub fn build(self) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -3441,24 +3455,26 @@ impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurren
     }
 }
 
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef {
+impl terrars::Ref for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef {
+    ) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -3490,7 +3506,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -3505,7 +3521,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurre
     tiers: std
     ::option
     ::Option<
-        terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl>,
+        terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers>,
     >,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount: std::option::Option<terrars::PrimField<f64>>,
@@ -3513,7 +3529,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurre
     unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
     #[doc = "Set the field `custom_unit_amount_maximum`.\n"]
     pub fn set_custom_unit_amount_maximum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.custom_unit_amount_maximum = std::option::Option::Some(v.into());
@@ -3555,7 +3571,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
                     ::Into<
                         terrars
                         ::ListField<
-                            CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersEl,
+                            Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_Tiers,
                         >,
                     >,
     ) -> Self {
@@ -3579,9 +3595,9 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
+impl terrars::ToListMappable for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
     type O =
-        terrars::BlockAssignable<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl>;
+        terrars::BlockAssignable<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -3592,11 +3608,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscri
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {}
+pub struct BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {}
 
-impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl {
+impl BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
+    pub fn build(self) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions {
             custom_unit_amount_maximum: core::default::Default::default(),
             custom_unit_amount_minimum: core::default::Default::default(),
             custom_unit_amount_preset: core::default::Default::default(),
@@ -3609,24 +3625,26 @@ impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurren
     }
 }
 
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef {
+impl terrars::Ref for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef {
+    ) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -3659,8 +3677,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
     pub fn tiers(
         &self,
-    ) -> terrars
-    ::ListRef<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElTiersElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
     }
 
@@ -3676,7 +3693,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOpt
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -3689,7 +3706,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiers
     up_to: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
     #[doc = "Set the field `flat_amount`.\n"]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -3727,8 +3744,8 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -3739,11 +3756,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscri
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {}
+pub struct BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {}
 
-impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl {
+impl BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
+    pub fn build(self) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -3753,24 +3770,26 @@ impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersE
     }
 }
 
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef {
+impl terrars::Ref for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef {
+    ) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -3802,7 +3821,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef 
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     active: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -3833,7 +3852,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl
     tax_type: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
     #[doc = "Set the field `active`.\n"]
     pub fn set_active(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.active = std::option::Option::Some(v.into());
@@ -3922,8 +3941,8 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -3934,11 +3953,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscri
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {}
+pub struct BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {}
 
-impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl {
+impl BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
+    pub fn build(self) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates {
             active: core::default::Default::default(),
             country: core::default::Default::default(),
             created: core::default::Default::default(),
@@ -3957,24 +3976,26 @@ impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl 
     }
 }
 
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
+impl terrars::Ref for Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
+    ) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -4051,7 +4072,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItems {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     billing_thresholds_usage_gte: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4073,7 +4094,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_currency_options: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4107,7 +4128,7 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_tiers: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     price_tiers_mode: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4127,10 +4148,10 @@ pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     tax_rates: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates>>,
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItems {
     #[doc = "Set the field `billing_thresholds_usage_gte`.\n"]
     pub fn set_billing_thresholds_usage_gte(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.billing_thresholds_usage_gte = std::option::Option::Some(v.into());
@@ -4201,7 +4222,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
                     ::convert
                     ::Into<
                         terrars
-                        ::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsEl>,
+                        ::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptions>,
                     >,
     ) -> Self {
         self.price_currency_options = std::option::Option::Some(v.into());
@@ -4321,9 +4342,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
 
                     std
                     ::convert
-                    ::Into<
-                        terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersEl>,
-                    >,
+                    ::Into<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiers>>,
     ) -> Self {
         self.price_tiers = std::option::Option::Some(v.into());
         self
@@ -4394,15 +4413,15 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
 
                     std
                     ::convert
-                    ::Into<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesEl>>,
+                    ::Into<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRates>>,
     ) -> Self {
         self.tax_rates = std::option::Option::Some(v.into());
         self
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData_PendingUpdateSubscriptionItems {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData_PendingUpdateSubscriptionItems>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -4413,11 +4432,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataElPendingUpdateSubscri
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {}
+pub struct BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems {}
 
-impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
-    pub fn build(self) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
+impl BuildCustomer_SubscriptionsData_PendingUpdateSubscriptionItems {
+    pub fn build(self) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItems {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItems {
             billing_thresholds_usage_gte: core::default::Default::default(),
             created: core::default::Default::default(),
             id: core::default::Default::default(),
@@ -4457,24 +4476,26 @@ impl BuildCustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
+impl terrars::Ref for Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
-        CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
+    ) -> Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef {
+        Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
+impl Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -4527,7 +4548,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
     #[doc = "Get a reference to the value of field `price_currency_options` after provisioning.\n"]
     pub fn price_currency_options(
         &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceCurrencyOptionsElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.price_currency_options", self.base))
     }
 
@@ -4609,7 +4630,7 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
     #[doc = "Get a reference to the value of field `price_tiers` after provisioning.\n"]
     pub fn price_tiers(
         &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElPriceTiersElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_PriceTiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.price_tiers", self.base))
     }
 
@@ -4654,15 +4675,13 @@ impl CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef {
     }
 
     #[doc = "Get a reference to the value of field `tax_rates` after provisioning.\n"]
-    pub fn tax_rates(
-        &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElTaxRatesElRef> {
+    pub fn tax_rates(&self) -> terrars::ListRef<Customer_SubscriptionsData_PendingUpdateSubscriptionItems_TaxRatesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_rates", self.base))
     }
 }
 
 #[derive(Serialize)]
-pub struct CustomerSubscriptionsDataEl {
+pub struct Customer_SubscriptionsData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     application: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4700,7 +4719,7 @@ pub struct CustomerSubscriptionsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     default_source: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    default_tax_rates: std::option::Option<terrars::ListField<CustomerSubscriptionsDataElDefaultTaxRatesEl>>,
+    default_tax_rates: std::option::Option<terrars::ListField<Customer_SubscriptionsData_DefaultTaxRates>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     description: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4718,7 +4737,7 @@ pub struct CustomerSubscriptionsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     discount_coupon_currency_options: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_DiscountCouponCurrencyOptions>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     discount_coupon_duration: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4766,7 +4785,7 @@ pub struct CustomerSubscriptionsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     id: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    items_data: std::option::Option<terrars::ListField<CustomerSubscriptionsDataElItemsDataEl>>,
+    items_data: std::option::Option<terrars::ListField<Customer_SubscriptionsData_ItemsData>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     items_has_more: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4856,7 +4875,7 @@ pub struct CustomerSubscriptionsDataEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     pending_update_subscription_items: std
     ::option
-    ::Option<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl>>,
+    ::Option<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     pending_update_trial_end: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -4879,7 +4898,7 @@ pub struct CustomerSubscriptionsDataEl {
     trial_start: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl CustomerSubscriptionsDataEl {
+impl Customer_SubscriptionsData {
     #[doc = "Set the field `application`.\n"]
     pub fn set_application(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.application = std::option::Option::Some(v.into());
@@ -4997,7 +5016,7 @@ impl CustomerSubscriptionsDataEl {
     #[doc = "Set the field `default_tax_rates`.\n"]
     pub fn set_default_tax_rates(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElDefaultTaxRatesEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_DefaultTaxRates>>,
     ) -> Self {
         self.default_tax_rates = std::option::Option::Some(v.into());
         self
@@ -5051,7 +5070,7 @@ impl CustomerSubscriptionsDataEl {
     #[doc = "Set the field `discount_coupon_currency_options`.\n"]
     pub fn set_discount_coupon_currency_options(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_DiscountCouponCurrencyOptions>>,
     ) -> Self {
         self.discount_coupon_currency_options = std::option::Option::Some(v.into());
         self
@@ -5225,7 +5244,7 @@ impl CustomerSubscriptionsDataEl {
     #[doc = "Set the field `items_data`.\n"]
     pub fn set_items_data(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElItemsDataEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_ItemsData>>,
     ) -> Self {
         self.items_data = std::option::Option::Some(v.into());
         self
@@ -5497,7 +5516,7 @@ impl CustomerSubscriptionsDataEl {
     #[doc = "Set the field `pending_update_subscription_items`.\n"]
     pub fn set_pending_update_subscription_items(
         mut self,
-        v: impl std::convert::Into<terrars::ListField<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsEl>>,
+        v: impl std::convert::Into<terrars::ListField<Customer_SubscriptionsData_PendingUpdateSubscriptionItems>>,
     ) -> Self {
         self.pending_update_subscription_items = std::option::Option::Some(v.into());
         self
@@ -5567,8 +5586,8 @@ impl CustomerSubscriptionsDataEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerSubscriptionsDataEl {
-    type O = terrars::BlockAssignable<CustomerSubscriptionsDataEl>;
+impl terrars::ToListMappable for Customer_SubscriptionsData {
+    type O = terrars::BlockAssignable<Customer_SubscriptionsData>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -5579,11 +5598,11 @@ impl terrars::ToListMappable for CustomerSubscriptionsDataEl {
     }
 }
 
-pub struct BuildCustomerSubscriptionsDataEl {}
+pub struct BuildCustomer_SubscriptionsData {}
 
-impl BuildCustomerSubscriptionsDataEl {
-    pub fn build(self) -> CustomerSubscriptionsDataEl {
-        CustomerSubscriptionsDataEl {
+impl BuildCustomer_SubscriptionsData {
+    pub fn build(self) -> Customer_SubscriptionsData {
+        Customer_SubscriptionsData {
             application: core::default::Default::default(),
             application_fee_percent: core::default::Default::default(),
             automatic_tax_enabled: core::default::Default::default(),
@@ -5701,21 +5720,23 @@ impl BuildCustomerSubscriptionsDataEl {
     }
 }
 
-pub struct CustomerSubscriptionsDataElRef {
+#[allow(dead_code)]
+pub struct Customer_SubscriptionsDataRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerSubscriptionsDataElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerSubscriptionsDataElRef {
-        CustomerSubscriptionsDataElRef {
+impl terrars::Ref for Customer_SubscriptionsDataRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_SubscriptionsDataRef {
+        Customer_SubscriptionsDataRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerSubscriptionsDataElRef {
+impl Customer_SubscriptionsDataRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -5815,7 +5836,7 @@ impl CustomerSubscriptionsDataElRef {
     }
 
     #[doc = "Get a reference to the value of field `default_tax_rates` after provisioning.\n"]
-    pub fn default_tax_rates(&self) -> terrars::ListRef<CustomerSubscriptionsDataElDefaultTaxRatesElRef> {
+    pub fn default_tax_rates(&self) -> terrars::ListRef<Customer_SubscriptionsData_DefaultTaxRatesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.default_tax_rates", self.base))
     }
 
@@ -5852,7 +5873,7 @@ impl CustomerSubscriptionsDataElRef {
     #[doc = "Get a reference to the value of field `discount_coupon_currency_options` after provisioning.\n"]
     pub fn discount_coupon_currency_options(
         &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElDiscountCouponCurrencyOptionsElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_DiscountCouponCurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.discount_coupon_currency_options", self.base))
     }
 
@@ -5972,7 +5993,7 @@ impl CustomerSubscriptionsDataElRef {
     }
 
     #[doc = "Get a reference to the value of field `items_data` after provisioning.\n"]
-    pub fn items_data(&self) -> terrars::ListRef<CustomerSubscriptionsDataElItemsDataElRef> {
+    pub fn items_data(&self) -> terrars::ListRef<Customer_SubscriptionsData_ItemsDataRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.items_data", self.base))
     }
 
@@ -6228,7 +6249,7 @@ impl CustomerSubscriptionsDataElRef {
     #[doc = "Get a reference to the value of field `pending_update_subscription_items` after provisioning.\n"]
     pub fn pending_update_subscription_items(
         &self,
-    ) -> terrars::ListRef<CustomerSubscriptionsDataElPendingUpdateSubscriptionItemsElRef> {
+    ) -> terrars::ListRef<Customer_SubscriptionsData_PendingUpdateSubscriptionItemsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.pending_update_subscription_items", self.base))
     }
 
@@ -6284,7 +6305,7 @@ impl CustomerSubscriptionsDataElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerTaxIdsDataEl {
+pub struct Customer_TaxIdsData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     country: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -6309,7 +6330,7 @@ pub struct CustomerTaxIdsDataEl {
     verification_verified_name: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl CustomerTaxIdsDataEl {
+impl Customer_TaxIdsData {
     #[doc = "Set the field `country`.\n"]
     pub fn set_country(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.country = std::option::Option::Some(v.into());
@@ -6386,8 +6407,8 @@ impl CustomerTaxIdsDataEl {
     }
 }
 
-impl terrars::ToListMappable for CustomerTaxIdsDataEl {
-    type O = terrars::BlockAssignable<CustomerTaxIdsDataEl>;
+impl terrars::ToListMappable for Customer_TaxIdsData {
+    type O = terrars::BlockAssignable<Customer_TaxIdsData>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6398,11 +6419,11 @@ impl terrars::ToListMappable for CustomerTaxIdsDataEl {
     }
 }
 
-pub struct BuildCustomerTaxIdsDataEl {}
+pub struct BuildCustomer_TaxIdsData {}
 
-impl BuildCustomerTaxIdsDataEl {
-    pub fn build(self) -> CustomerTaxIdsDataEl {
-        CustomerTaxIdsDataEl {
+impl BuildCustomer_TaxIdsData {
+    pub fn build(self) -> Customer_TaxIdsData {
+        Customer_TaxIdsData {
             country: core::default::Default::default(),
             created: core::default::Default::default(),
             customer: core::default::Default::default(),
@@ -6418,21 +6439,23 @@ impl BuildCustomerTaxIdsDataEl {
     }
 }
 
-pub struct CustomerTaxIdsDataElRef {
+#[allow(dead_code)]
+pub struct Customer_TaxIdsDataRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerTaxIdsDataElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerTaxIdsDataElRef {
-        CustomerTaxIdsDataElRef {
+impl terrars::Ref for Customer_TaxIdsDataRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_TaxIdsDataRef {
+        Customer_TaxIdsDataRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerTaxIdsDataElRef {
+impl Customer_TaxIdsDataRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6494,15 +6517,15 @@ impl CustomerTaxIdsDataElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerInvoiceSettingsCustomFieldsEl {
+pub struct Customer_InvoiceSettingsCustomFields {
     name: terrars::PrimField<std::string::String>,
     value: terrars::PrimField<std::string::String>,
 }
 
-impl CustomerInvoiceSettingsCustomFieldsEl { }
+impl Customer_InvoiceSettingsCustomFields { }
 
-impl terrars::ToListMappable for CustomerInvoiceSettingsCustomFieldsEl {
-    type O = terrars::BlockAssignable<CustomerInvoiceSettingsCustomFieldsEl>;
+impl terrars::ToListMappable for Customer_InvoiceSettingsCustomFields {
+    type O = terrars::BlockAssignable<Customer_InvoiceSettingsCustomFields>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6513,37 +6536,39 @@ impl terrars::ToListMappable for CustomerInvoiceSettingsCustomFieldsEl {
     }
 }
 
-pub struct BuildCustomerInvoiceSettingsCustomFieldsEl {
+pub struct BuildCustomer_InvoiceSettingsCustomFields {
     #[doc = "The name of the custom field."]
     pub name: terrars::PrimField<std::string::String>,
     #[doc = "The value of the custom field."]
     pub value: terrars::PrimField<std::string::String>,
 }
 
-impl BuildCustomerInvoiceSettingsCustomFieldsEl {
-    pub fn build(self) -> CustomerInvoiceSettingsCustomFieldsEl {
-        CustomerInvoiceSettingsCustomFieldsEl {
+impl BuildCustomer_InvoiceSettingsCustomFields {
+    pub fn build(self) -> Customer_InvoiceSettingsCustomFields {
+        Customer_InvoiceSettingsCustomFields {
             name: self.name,
             value: self.value,
         }
     }
 }
 
-pub struct CustomerInvoiceSettingsCustomFieldsElRef {
+#[allow(dead_code)]
+pub struct Customer_InvoiceSettingsCustomFieldsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerInvoiceSettingsCustomFieldsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerInvoiceSettingsCustomFieldsElRef {
-        CustomerInvoiceSettingsCustomFieldsElRef {
+impl terrars::Ref for Customer_InvoiceSettingsCustomFieldsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_InvoiceSettingsCustomFieldsRef {
+        Customer_InvoiceSettingsCustomFieldsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerInvoiceSettingsCustomFieldsElRef {
+impl Customer_InvoiceSettingsCustomFieldsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6560,16 +6585,16 @@ impl CustomerInvoiceSettingsCustomFieldsElRef {
 }
 
 #[derive(Serialize)]
-pub struct CustomerTaxIdDataEl {
+pub struct Customer_TaxIdData {
     #[serde(rename = "type")]
     type_: terrars::PrimField<std::string::String>,
     value: terrars::PrimField<std::string::String>,
 }
 
-impl CustomerTaxIdDataEl { }
+impl Customer_TaxIdData { }
 
-impl terrars::ToListMappable for CustomerTaxIdDataEl {
-    type O = terrars::BlockAssignable<CustomerTaxIdDataEl>;
+impl terrars::ToListMappable for Customer_TaxIdData {
+    type O = terrars::BlockAssignable<Customer_TaxIdData>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -6580,37 +6605,39 @@ impl terrars::ToListMappable for CustomerTaxIdDataEl {
     }
 }
 
-pub struct BuildCustomerTaxIdDataEl {
+pub struct BuildCustomer_TaxIdData {
     #[doc = ""]
     pub type_: terrars::PrimField<std::string::String>,
     #[doc = ""]
     pub value: terrars::PrimField<std::string::String>,
 }
 
-impl BuildCustomerTaxIdDataEl {
-    pub fn build(self) -> CustomerTaxIdDataEl {
-        CustomerTaxIdDataEl {
+impl BuildCustomer_TaxIdData {
+    pub fn build(self) -> Customer_TaxIdData {
+        Customer_TaxIdData {
             type_: self.type_,
             value: self.value,
         }
     }
 }
 
-pub struct CustomerTaxIdDataElRef {
+#[allow(dead_code)]
+pub struct Customer_TaxIdDataRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for CustomerTaxIdDataElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> CustomerTaxIdDataElRef {
-        CustomerTaxIdDataElRef {
+impl terrars::Ref for Customer_TaxIdDataRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Customer_TaxIdDataRef {
+        Customer_TaxIdDataRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl CustomerTaxIdDataElRef {
+impl Customer_TaxIdDataRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -6628,6 +6655,6 @@ impl CustomerTaxIdDataElRef {
 
 #[derive(Serialize, Default)]
 struct CustomerDynamic {
-    invoice_settings_custom_fields: std::option::Option<terrars::DynamicBlock<CustomerInvoiceSettingsCustomFieldsEl>>,
-    tax_id_data: std::option::Option<terrars::DynamicBlock<CustomerTaxIdDataEl>>,
+    invoice_settings_custom_fields: std::option::Option<terrars::DynamicBlock<Customer_InvoiceSettingsCustomFields>>,
+    tax_id_data: std::option::Option<terrars::DynamicBlock<Customer_TaxIdData>>,
 }

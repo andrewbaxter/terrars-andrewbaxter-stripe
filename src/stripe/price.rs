@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct PriceData {
+struct PriceData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -72,16 +74,16 @@ struct PriceData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    currency_options: std::option::Option<std::vec::Vec<PriceCurrencyOptionsEl>>,
+    currency_options: std::option::Option<std::vec::Vec<Price_CurrencyOptions>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tiers: std::option::Option<std::vec::Vec<PriceTiersEl>>,
+    tiers: std::option::Option<std::vec::Vec<Price_Tiers>>,
     dynamic: PriceDynamic,
 }
 
 struct Price_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<PriceData>,
+    data: std::cell::RefCell<PriceData_>,
 }
 
 #[derive(Clone)]
@@ -369,7 +371,7 @@ impl Price {
     #[doc = "Set the field `currency_options`.\n"]
     pub fn set_currency_options(
         self,
-        v: impl std::convert::Into<terrars::BlockAssignable<PriceCurrencyOptionsEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<Price_CurrencyOptions>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -383,7 +385,7 @@ impl Price {
     }
 
     #[doc = "Set the field `tiers`.\n"]
-    pub fn set_tiers(self, v: impl std::convert::Into<terrars::BlockAssignable<PriceTiersEl>>) -> Self {
+    pub fn set_tiers(self, v: impl std::convert::Into<terrars::BlockAssignable<Price_Tiers>>) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
                 self.0.data.borrow_mut().tiers = std::option::Option::Some(v);
@@ -582,12 +584,12 @@ impl Price {
     }
 
     #[doc = "Get a reference to the value of field `currency_options` after provisioning.\n"]
-    pub fn currency_options(&self) -> terrars::ListRef<PriceCurrencyOptionsElRef> {
+    pub fn currency_options(&self) -> terrars::ListRef<Price_CurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.currency_options", self.extract_ref()))
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<PriceTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Price_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.extract_ref()))
     }
 }
@@ -635,7 +637,7 @@ impl BuildPrice {
         let out = Price(std::rc::Rc::new(Price_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(PriceData {
+            data: std::cell::RefCell::new(PriceData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -888,18 +890,18 @@ impl PriceRef {
     }
 
     #[doc = "Get a reference to the value of field `currency_options` after provisioning.\n"]
-    pub fn currency_options(&self) -> terrars::ListRef<PriceCurrencyOptionsElRef> {
+    pub fn currency_options(&self) -> terrars::ListRef<Price_CurrencyOptionsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.currency_options", self.extract_ref()))
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<PriceTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Price_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct PriceCurrencyOptionsElTiersEl {
+pub struct Price_CurrencyOptions_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -911,7 +913,7 @@ pub struct PriceCurrencyOptionsElTiersEl {
     up_to: terrars::PrimField<std::string::String>,
 }
 
-impl PriceCurrencyOptionsElTiersEl {
+impl Price_CurrencyOptions_Tiers {
     #[doc = "Set the field `flat_amount`.\nPrice for the entire tier."]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -945,8 +947,8 @@ impl PriceCurrencyOptionsElTiersEl {
     }
 }
 
-impl terrars::ToListMappable for PriceCurrencyOptionsElTiersEl {
-    type O = terrars::BlockAssignable<PriceCurrencyOptionsElTiersEl>;
+impl terrars::ToListMappable for Price_CurrencyOptions_Tiers {
+    type O = terrars::BlockAssignable<Price_CurrencyOptions_Tiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -957,14 +959,14 @@ impl terrars::ToListMappable for PriceCurrencyOptionsElTiersEl {
     }
 }
 
-pub struct BuildPriceCurrencyOptionsElTiersEl {
+pub struct BuildPrice_CurrencyOptions_Tiers {
     #[doc = "Up to and including to this quantity will be contained in the tier."]
     pub up_to: terrars::PrimField<std::string::String>,
 }
 
-impl BuildPriceCurrencyOptionsElTiersEl {
-    pub fn build(self) -> PriceCurrencyOptionsElTiersEl {
-        PriceCurrencyOptionsElTiersEl {
+impl BuildPrice_CurrencyOptions_Tiers {
+    pub fn build(self) -> Price_CurrencyOptions_Tiers {
+        Price_CurrencyOptions_Tiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -974,21 +976,23 @@ impl BuildPriceCurrencyOptionsElTiersEl {
     }
 }
 
-pub struct PriceCurrencyOptionsElTiersElRef {
+#[allow(dead_code)]
+pub struct Price_CurrencyOptions_TiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PriceCurrencyOptionsElTiersElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PriceCurrencyOptionsElTiersElRef {
-        PriceCurrencyOptionsElTiersElRef {
+impl terrars::Ref for Price_CurrencyOptions_TiersRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_CurrencyOptions_TiersRef {
+        Price_CurrencyOptions_TiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PriceCurrencyOptionsElTiersElRef {
+impl Price_CurrencyOptions_TiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1024,12 +1028,12 @@ impl PriceCurrencyOptionsElTiersElRef {
 }
 
 #[derive(Serialize, Default)]
-struct PriceCurrencyOptionsElDynamic {
-    tiers: std::option::Option<terrars::DynamicBlock<PriceCurrencyOptionsElTiersEl>>,
+struct Price_CurrencyOptionsDynamic {
+    tiers: std::option::Option<terrars::DynamicBlock<Price_CurrencyOptions_Tiers>>,
 }
 
 #[derive(Serialize)]
-pub struct PriceCurrencyOptionsEl {
+pub struct Price_CurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     custom_unit_amount_enabled: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1046,11 +1050,11 @@ pub struct PriceCurrencyOptionsEl {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tiers: std::option::Option<std::vec::Vec<PriceCurrencyOptionsElTiersEl>>,
-    dynamic: PriceCurrencyOptionsElDynamic,
+    tiers: std::option::Option<std::vec::Vec<Price_CurrencyOptions_Tiers>>,
+    dynamic: Price_CurrencyOptionsDynamic,
 }
 
-impl PriceCurrencyOptionsEl {
+impl Price_CurrencyOptions {
     #[doc = "Set the field `custom_unit_amount_enabled`.\n"]
     pub fn set_custom_unit_amount_enabled(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.custom_unit_amount_enabled = std::option::Option::Some(v.into());
@@ -1105,7 +1109,7 @@ impl PriceCurrencyOptionsEl {
     #[doc = "Set the field `tiers`.\n"]
     pub fn set_tiers(
         mut self,
-        v: impl std::convert::Into<terrars::BlockAssignable<PriceCurrencyOptionsElTiersEl>>,
+        v: impl std::convert::Into<terrars::BlockAssignable<Price_CurrencyOptions_Tiers>>,
     ) -> Self {
         match v.into() {
             terrars::BlockAssignable::Literal(v) => {
@@ -1119,8 +1123,8 @@ impl PriceCurrencyOptionsEl {
     }
 }
 
-impl terrars::ToListMappable for PriceCurrencyOptionsEl {
-    type O = terrars::BlockAssignable<PriceCurrencyOptionsEl>;
+impl terrars::ToListMappable for Price_CurrencyOptions {
+    type O = terrars::BlockAssignable<Price_CurrencyOptions>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1131,14 +1135,14 @@ impl terrars::ToListMappable for PriceCurrencyOptionsEl {
     }
 }
 
-pub struct BuildPriceCurrencyOptionsEl {
+pub struct BuildPrice_CurrencyOptions {
     #[doc = "Key for this field in parent map (synthetic to work around Terraform limitations)"]
     pub key: terrars::PrimField<std::string::String>,
 }
 
-impl BuildPriceCurrencyOptionsEl {
-    pub fn build(self) -> PriceCurrencyOptionsEl {
-        PriceCurrencyOptionsEl {
+impl BuildPrice_CurrencyOptions {
+    pub fn build(self) -> Price_CurrencyOptions {
+        Price_CurrencyOptions {
             custom_unit_amount_enabled: core::default::Default::default(),
             custom_unit_amount_maximum: core::default::Default::default(),
             custom_unit_amount_minimum: core::default::Default::default(),
@@ -1153,21 +1157,23 @@ impl BuildPriceCurrencyOptionsEl {
     }
 }
 
-pub struct PriceCurrencyOptionsElRef {
+#[allow(dead_code)]
+pub struct Price_CurrencyOptionsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PriceCurrencyOptionsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PriceCurrencyOptionsElRef {
-        PriceCurrencyOptionsElRef {
+impl terrars::Ref for Price_CurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_CurrencyOptionsRef {
+        Price_CurrencyOptionsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PriceCurrencyOptionsElRef {
+impl Price_CurrencyOptionsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1220,13 +1226,13 @@ impl PriceCurrencyOptionsElRef {
     }
 
     #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<PriceCurrencyOptionsElTiersElRef> {
+    pub fn tiers(&self) -> terrars::ListRef<Price_CurrencyOptions_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
     }
 }
 
 #[derive(Serialize)]
-pub struct PriceTiersEl {
+pub struct Price_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     flat_amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1238,7 +1244,7 @@ pub struct PriceTiersEl {
     up_to: terrars::PrimField<std::string::String>,
 }
 
-impl PriceTiersEl {
+impl Price_Tiers {
     #[doc = "Set the field `flat_amount`.\nPrice for the entire tier."]
     pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.flat_amount = std::option::Option::Some(v.into());
@@ -1272,8 +1278,8 @@ impl PriceTiersEl {
     }
 }
 
-impl terrars::ToListMappable for PriceTiersEl {
-    type O = terrars::BlockAssignable<PriceTiersEl>;
+impl terrars::ToListMappable for Price_Tiers {
+    type O = terrars::BlockAssignable<Price_Tiers>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -1284,14 +1290,14 @@ impl terrars::ToListMappable for PriceTiersEl {
     }
 }
 
-pub struct BuildPriceTiersEl {
+pub struct BuildPrice_Tiers {
     #[doc = "Up to and including to this quantity will be contained in the tier."]
     pub up_to: terrars::PrimField<std::string::String>,
 }
 
-impl BuildPriceTiersEl {
-    pub fn build(self) -> PriceTiersEl {
-        PriceTiersEl {
+impl BuildPrice_Tiers {
+    pub fn build(self) -> Price_Tiers {
+        Price_Tiers {
             flat_amount: core::default::Default::default(),
             flat_amount_decimal: core::default::Default::default(),
             unit_amount: core::default::Default::default(),
@@ -1301,21 +1307,23 @@ impl BuildPriceTiersEl {
     }
 }
 
-pub struct PriceTiersElRef {
+#[allow(dead_code)]
+pub struct Price_TiersRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for PriceTiersElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> PriceTiersElRef {
-        PriceTiersElRef {
+impl terrars::Ref for Price_TiersRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_TiersRef {
+        Price_TiersRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl PriceTiersElRef {
+impl Price_TiersRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -1352,6 +1360,6 @@ impl PriceTiersElRef {
 
 #[derive(Serialize, Default)]
 struct PriceDynamic {
-    currency_options: std::option::Option<terrars::DynamicBlock<PriceCurrencyOptionsEl>>,
-    tiers: std::option::Option<terrars::DynamicBlock<PriceTiersEl>>,
+    currency_options: std::option::Option<terrars::DynamicBlock<Price_CurrencyOptions>>,
+    tiers: std::option::Option<terrars::DynamicBlock<Price_Tiers>>,
 }

@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderStripe;
 
 #[derive(Serialize)]
-struct TerminalReaderData {
+struct TerminalReaderData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -28,7 +30,7 @@ struct TerminalReaderData {
 struct TerminalReader_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<TerminalReaderData>,
+    data: std::cell::RefCell<TerminalReaderData_>,
 }
 
 #[derive(Clone)]
@@ -211,7 +213,7 @@ impl TerminalReader {
         "Get a reference to the value of field `action_set_reader_display_cart_line_items` after provisioning.\nList of line items in the cart."]
     pub fn action_set_reader_display_cart_line_items(
         &self,
-    ) -> terrars::ListRef<TerminalReaderActionSetReaderDisplayCartLineItemsElRef> {
+    ) -> terrars::ListRef<TerminalReader_ActionSetReaderDisplayCartLineItemsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.action_set_reader_display_cart_line_items", self.extract_ref()),
@@ -363,7 +365,7 @@ impl BuildTerminalReader {
         let out = TerminalReader(std::rc::Rc::new(TerminalReader_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(TerminalReaderData {
+            data: std::cell::RefCell::new(TerminalReaderData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -472,7 +474,7 @@ impl TerminalReaderRef {
         "Get a reference to the value of field `action_set_reader_display_cart_line_items` after provisioning.\nList of line items in the cart."]
     pub fn action_set_reader_display_cart_line_items(
         &self,
-    ) -> terrars::ListRef<TerminalReaderActionSetReaderDisplayCartLineItemsElRef> {
+    ) -> terrars::ListRef<TerminalReader_ActionSetReaderDisplayCartLineItemsRef> {
         terrars::ListRef::new(
             self.shared().clone(),
             format!("{}.action_set_reader_display_cart_line_items", self.extract_ref()),
@@ -583,7 +585,7 @@ impl TerminalReaderRef {
 }
 
 #[derive(Serialize)]
-pub struct TerminalReaderActionSetReaderDisplayCartLineItemsEl {
+pub struct TerminalReader_ActionSetReaderDisplayCartLineItems {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     amount: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -592,7 +594,7 @@ pub struct TerminalReaderActionSetReaderDisplayCartLineItemsEl {
     quantity: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl TerminalReaderActionSetReaderDisplayCartLineItemsEl {
+impl TerminalReader_ActionSetReaderDisplayCartLineItems {
     #[doc = "Set the field `amount`.\n"]
     pub fn set_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
         self.amount = std::option::Option::Some(v.into());
@@ -612,8 +614,8 @@ impl TerminalReaderActionSetReaderDisplayCartLineItemsEl {
     }
 }
 
-impl terrars::ToListMappable for TerminalReaderActionSetReaderDisplayCartLineItemsEl {
-    type O = terrars::BlockAssignable<TerminalReaderActionSetReaderDisplayCartLineItemsEl>;
+impl terrars::ToListMappable for TerminalReader_ActionSetReaderDisplayCartLineItems {
+    type O = terrars::BlockAssignable<TerminalReader_ActionSetReaderDisplayCartLineItems>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -624,11 +626,11 @@ impl terrars::ToListMappable for TerminalReaderActionSetReaderDisplayCartLineIte
     }
 }
 
-pub struct BuildTerminalReaderActionSetReaderDisplayCartLineItemsEl {}
+pub struct BuildTerminalReader_ActionSetReaderDisplayCartLineItems {}
 
-impl BuildTerminalReaderActionSetReaderDisplayCartLineItemsEl {
-    pub fn build(self) -> TerminalReaderActionSetReaderDisplayCartLineItemsEl {
-        TerminalReaderActionSetReaderDisplayCartLineItemsEl {
+impl BuildTerminalReader_ActionSetReaderDisplayCartLineItems {
+    pub fn build(self) -> TerminalReader_ActionSetReaderDisplayCartLineItems {
+        TerminalReader_ActionSetReaderDisplayCartLineItems {
             amount: core::default::Default::default(),
             description: core::default::Default::default(),
             quantity: core::default::Default::default(),
@@ -636,24 +638,26 @@ impl BuildTerminalReaderActionSetReaderDisplayCartLineItemsEl {
     }
 }
 
-pub struct TerminalReaderActionSetReaderDisplayCartLineItemsElRef {
+#[allow(dead_code)]
+pub struct TerminalReader_ActionSetReaderDisplayCartLineItemsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for TerminalReaderActionSetReaderDisplayCartLineItemsElRef {
+impl terrars::Ref for TerminalReader_ActionSetReaderDisplayCartLineItemsRef {
     fn new(
         shared: terrars::StackShared,
         base: std::string::String,
-    ) -> TerminalReaderActionSetReaderDisplayCartLineItemsElRef {
-        TerminalReaderActionSetReaderDisplayCartLineItemsElRef {
+    ) -> TerminalReader_ActionSetReaderDisplayCartLineItemsRef {
+        TerminalReader_ActionSetReaderDisplayCartLineItemsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl TerminalReaderActionSetReaderDisplayCartLineItemsElRef {
+impl TerminalReader_ActionSetReaderDisplayCartLineItemsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }

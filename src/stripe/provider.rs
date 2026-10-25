@@ -1,7 +1,9 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 
 #[derive(Serialize)]
-struct ProviderStripeData {
+struct ProviderStripeData_ {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alias: std::option::Option<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -10,7 +12,7 @@ struct ProviderStripeData {
 }
 
 struct ProviderStripe_ {
-    data: std::cell::RefCell<ProviderStripeData>,
+    data: std::cell::RefCell<ProviderStripeData_>,
 }
 
 pub struct ProviderStripe(std::rc::Rc<ProviderStripe_>);
@@ -45,7 +47,7 @@ impl terrars::Provider for ProviderStripe_ {
     fn extract_provider_type(&self) -> serde_json::Value {
         serde_json::json!({
             "source": "andrewbaxter/stripe",
-            "version": "0.0.20",
+            "version": "0.0.24",
         })
     }
 
@@ -61,11 +63,12 @@ pub struct BuildProviderStripe {
 
 impl BuildProviderStripe {
     pub fn build(self, stack: &mut terrars::Stack) -> ProviderStripe {
-        let out = ProviderStripe(std::rc::Rc::new(ProviderStripe_ { data: std::cell::RefCell::new(ProviderStripeData {
-            alias: std::option::Option::None,
-            ratelimit: core::default::Default::default(),
-            token: self.token,
-        }) }));
+        let out =
+            ProviderStripe(std::rc::Rc::new(ProviderStripe_ { data: std::cell::RefCell::new(ProviderStripeData_ {
+                alias: std::option::Option::None,
+                ratelimit: core::default::Default::default(),
+                token: self.token,
+            }) }));
         stack.add_provider(out.0.clone());
         out
     }
