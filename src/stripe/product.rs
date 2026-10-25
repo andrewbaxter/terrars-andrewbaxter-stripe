@@ -717,6 +717,13 @@ impl ProductRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct ProductDynamic {
+    default_price_data_currency_options: std
+    ::option
+    ::Option<terrars::DynamicBlock<Product_DefaultPriceDataCurrencyOptions>>,
+}
+
 #[derive(Serialize)]
 pub struct Product_DefaultPriceDataCurrencyOptions_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1031,11 +1038,4 @@ impl Product_DefaultPriceDataCurrencyOptionsRef {
     pub fn tiers(&self) -> terrars::ListRef<Product_DefaultPriceDataCurrencyOptions_TiersRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct ProductDynamic {
-    default_price_data_currency_options: std
-    ::option
-    ::Option<terrars::DynamicBlock<Product_DefaultPriceDataCurrencyOptions>>,
 }

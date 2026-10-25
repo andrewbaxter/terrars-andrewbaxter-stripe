@@ -520,6 +520,13 @@ impl ShippingRateRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct ShippingRateDynamic {
+    fixed_amount_currency_options: std
+    ::option
+    ::Option<terrars::DynamicBlock<ShippingRate_FixedAmountCurrencyOptions>>,
+}
+
 #[derive(Serialize)]
 pub struct ShippingRate_FixedAmountCurrencyOptions {
     amount: terrars::PrimField<f64>,
@@ -604,11 +611,4 @@ impl ShippingRate_FixedAmountCurrencyOptionsRef {
     pub fn tax_behavior(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.tax_behavior", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct ShippingRateDynamic {
-    fixed_amount_currency_options: std
-    ::option
-    ::Option<terrars::DynamicBlock<ShippingRate_FixedAmountCurrencyOptions>>,
 }

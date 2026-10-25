@@ -760,6 +760,11 @@ impl InvoiceitemRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct InvoiceitemDynamic {
+    discounts: std::option::Option<terrars::DynamicBlock<Invoiceitem_Discounts>>,
+}
+
 #[derive(Serialize)]
 pub struct Invoiceitem_Discounts {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -894,9 +899,4 @@ impl Invoiceitem_DiscountsRef {
     pub fn subscription(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.subscription", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct InvoiceitemDynamic {
-    discounts: std::option::Option<terrars::DynamicBlock<Invoiceitem_Discounts>>,
 }

@@ -475,6 +475,13 @@ impl PromotionCodeRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct PromotionCodeDynamic {
+    restrictions_currency_options: std
+    ::option
+    ::Option<terrars::DynamicBlock<PromotionCode_RestrictionsCurrencyOptions>>,
+}
+
 #[derive(Serialize)]
 pub struct PromotionCode_RestrictionsCurrencyOptions {
     key: terrars::PrimField<std::string::String>,
@@ -549,11 +556,4 @@ impl PromotionCode_RestrictionsCurrencyOptionsRef {
     pub fn minimum_amount(&self) -> terrars::PrimExpr<f64> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.minimum_amount", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct PromotionCodeDynamic {
-    restrictions_currency_options: std
-    ::option
-    ::Option<terrars::DynamicBlock<PromotionCode_RestrictionsCurrencyOptions>>,
 }

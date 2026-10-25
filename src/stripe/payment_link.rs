@@ -1008,6 +1008,12 @@ impl PaymentLinkRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct PaymentLinkDynamic {
+    line_items: std::option::Option<terrars::DynamicBlock<PaymentLink_LineItems>>,
+    shipping_options: std::option::Option<terrars::DynamicBlock<PaymentLink_ShippingOptions>>,
+}
+
 #[derive(Serialize)]
 pub struct PaymentLink_LineItems {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -1184,10 +1190,4 @@ impl PaymentLink_ShippingOptionsRef {
     pub fn shipping_rate(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.shipping_rate", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct PaymentLinkDynamic {
-    line_items: std::option::Option<terrars::DynamicBlock<PaymentLink_LineItems>>,
-    shipping_options: std::option::Option<terrars::DynamicBlock<PaymentLink_ShippingOptions>>,
 }

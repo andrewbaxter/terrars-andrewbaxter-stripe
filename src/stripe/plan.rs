@@ -572,6 +572,11 @@ impl PlanRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct PlanDynamic {
+    tiers: std::option::Option<terrars::DynamicBlock<Plan_Tiers>>,
+}
+
 #[derive(Serialize)]
 pub struct Plan_Tiers {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -697,9 +702,4 @@ impl Plan_TiersRef {
     pub fn up_to(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.up_to", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct PlanDynamic {
-    tiers: std::option::Option<terrars::DynamicBlock<Plan_Tiers>>,
 }

@@ -877,6 +877,13 @@ impl BillingPortalConfigurationRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct BillingPortalConfigurationDynamic {
+    features_subscription_update_products: std
+    ::option
+    ::Option<terrars::DynamicBlock<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>>,
+}
+
 #[derive(Serialize)]
 pub struct BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts {
     prices: terrars::ListField<terrars::PrimField<std::string::String>>,
@@ -947,11 +954,4 @@ impl BillingPortalConfiguration_FeaturesSubscriptionUpdateProductsRef {
     pub fn product(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.product", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct BillingPortalConfigurationDynamic {
-    features_subscription_update_products: std
-    ::option
-    ::Option<terrars::DynamicBlock<BillingPortalConfiguration_FeaturesSubscriptionUpdateProducts>>,
 }

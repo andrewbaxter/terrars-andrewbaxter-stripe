@@ -900,335 +900,10 @@ impl PriceRef {
     }
 }
 
-#[derive(Serialize)]
-pub struct Price_CurrencyOptions_Tiers {
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    flat_amount: std::option::Option<terrars::PrimField<f64>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    flat_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    unit_amount: std::option::Option<terrars::PrimField<f64>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
-    up_to: terrars::PrimField<std::string::String>,
-}
-
-impl Price_CurrencyOptions_Tiers {
-    #[doc = "Set the field `flat_amount`.\nPrice for the entire tier."]
-    pub fn set_flat_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.flat_amount = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `flat_amount_decimal`.\nSame as `flat_amount`, but contains a decimal value with at most 12 decimal places."]
-    pub fn set_flat_amount_decimal(
-        mut self,
-        v: impl std::convert::Into<terrars::PrimField<std::string::String>>,
-    ) -> Self {
-        self.flat_amount_decimal = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc = "Set the field `unit_amount`.\nPer unit price for units relevant to the tier."]
-    pub fn set_unit_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.unit_amount = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `unit_amount_decimal`.\nSame as `unit_amount`, but contains a decimal value with at most 12 decimal places."]
-    pub fn set_unit_amount_decimal(
-        mut self,
-        v: impl std::convert::Into<terrars::PrimField<std::string::String>>,
-    ) -> Self {
-        self.unit_amount_decimal = std::option::Option::Some(v.into());
-        self
-    }
-}
-
-impl terrars::ToListMappable for Price_CurrencyOptions_Tiers {
-    type O = terrars::BlockAssignable<Price_CurrencyOptions_Tiers>;
-
-    fn do_map(self, base: std::string::String) -> Self::O {
-        terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
-            for_each: format!("${{{}}}", base),
-            iterator: "each".into(),
-            content: self,
-        })
-    }
-}
-
-pub struct BuildPrice_CurrencyOptions_Tiers {
-    #[doc = "Up to and including to this quantity will be contained in the tier."]
-    pub up_to: terrars::PrimField<std::string::String>,
-}
-
-impl BuildPrice_CurrencyOptions_Tiers {
-    pub fn build(self) -> Price_CurrencyOptions_Tiers {
-        Price_CurrencyOptions_Tiers {
-            flat_amount: core::default::Default::default(),
-            flat_amount_decimal: core::default::Default::default(),
-            unit_amount: core::default::Default::default(),
-            unit_amount_decimal: core::default::Default::default(),
-            up_to: self.up_to,
-        }
-    }
-}
-
-#[allow(dead_code)]
-pub struct Price_CurrencyOptions_TiersRef {
-    shared: terrars::StackShared,
-    base: std::string::String,
-}
-
-impl terrars::Ref for Price_CurrencyOptions_TiersRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_CurrencyOptions_TiersRef {
-        Price_CurrencyOptions_TiersRef {
-            shared: shared,
-            base: base.to_string(),
-        }
-    }
-}
-
-impl Price_CurrencyOptions_TiersRef {
-    #[allow(dead_code)]
-    fn shared(&self) -> &terrars::StackShared {
-        &self.shared
-    }
-
-    #[doc = "Get a reference to the value of field `flat_amount` after provisioning.\nPrice for the entire tier."]
-    pub fn flat_amount(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.flat_amount", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `flat_amount_decimal` after provisioning.\nSame as `flat_amount`, but contains a decimal value with at most 12 decimal places."]
-    pub fn flat_amount_decimal(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.flat_amount_decimal", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `unit_amount` after provisioning.\nPer unit price for units relevant to the tier."]
-    pub fn unit_amount(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `unit_amount_decimal` after provisioning.\nSame as `unit_amount`, but contains a decimal value with at most 12 decimal places."]
-    pub fn unit_amount_decimal(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount_decimal", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `up_to` after provisioning.\nUp to and including to this quantity will be contained in the tier."]
-    pub fn up_to(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.up_to", self.base))
-    }
-}
-
 #[derive(Serialize, Default)]
-struct Price_CurrencyOptionsDynamic {
-    tiers: std::option::Option<terrars::DynamicBlock<Price_CurrencyOptions_Tiers>>,
-}
-
-#[derive(Serialize)]
-pub struct Price_CurrencyOptions {
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    custom_unit_amount_enabled: std::option::Option<terrars::PrimField<bool>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    custom_unit_amount_minimum: std::option::Option<terrars::PrimField<f64>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    custom_unit_amount_preset: std::option::Option<terrars::PrimField<f64>>,
-    key: terrars::PrimField<std::string::String>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tax_behavior: std::option::Option<terrars::PrimField<std::string::String>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    unit_amount: std::option::Option<terrars::PrimField<f64>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
-    #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    tiers: std::option::Option<std::vec::Vec<Price_CurrencyOptions_Tiers>>,
-    dynamic: Price_CurrencyOptionsDynamic,
-}
-
-impl Price_CurrencyOptions {
-    #[doc = "Set the field `custom_unit_amount_enabled`.\n"]
-    pub fn set_custom_unit_amount_enabled(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
-        self.custom_unit_amount_enabled = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `custom_unit_amount_maximum`.\nThe maximum unit amount the customer can specify for this item."]
-    pub fn set_custom_unit_amount_maximum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.custom_unit_amount_maximum = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `custom_unit_amount_minimum`.\nThe minimum unit amount the customer can specify for this item. Must be at least the minimum charge amount."]
-    pub fn set_custom_unit_amount_minimum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.custom_unit_amount_minimum = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `custom_unit_amount_preset`.\nThe starting unit amount which can be updated by the customer."]
-    pub fn set_custom_unit_amount_preset(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.custom_unit_amount_preset = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `tax_behavior`.\nSpecifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed."]
-    pub fn set_tax_behavior(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
-        self.tax_behavior = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `unit_amount`.\nThe unit amount in %s to be charged, represented as a whole integer if possible. Only set if `billing_scheme=per_unit`."]
-    pub fn set_unit_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
-        self.unit_amount = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc =
-        "Set the field `unit_amount_decimal`.\nThe unit amount in %s to be charged, represented as a decimal string with at most 12 decimal places. Only set if `billing_scheme=per_unit`."]
-    pub fn set_unit_amount_decimal(
-        mut self,
-        v: impl std::convert::Into<terrars::PrimField<std::string::String>>,
-    ) -> Self {
-        self.unit_amount_decimal = std::option::Option::Some(v.into());
-        self
-    }
-
-    #[doc = "Set the field `tiers`.\n"]
-    pub fn set_tiers(
-        mut self,
-        v: impl std::convert::Into<terrars::BlockAssignable<Price_CurrencyOptions_Tiers>>,
-    ) -> Self {
-        match v.into() {
-            terrars::BlockAssignable::Literal(v) => {
-                self.tiers = std::option::Option::Some(v);
-            },
-            terrars::BlockAssignable::Dynamic(d) => {
-                self.dynamic.tiers = std::option::Option::Some(d);
-            },
-        }
-        self
-    }
-}
-
-impl terrars::ToListMappable for Price_CurrencyOptions {
-    type O = terrars::BlockAssignable<Price_CurrencyOptions>;
-
-    fn do_map(self, base: std::string::String) -> Self::O {
-        terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
-            for_each: format!("${{{}}}", base),
-            iterator: "each".into(),
-            content: self,
-        })
-    }
-}
-
-pub struct BuildPrice_CurrencyOptions {
-    #[doc = "Key for this field in parent map (synthetic to work around Terraform limitations)"]
-    pub key: terrars::PrimField<std::string::String>,
-}
-
-impl BuildPrice_CurrencyOptions {
-    pub fn build(self) -> Price_CurrencyOptions {
-        Price_CurrencyOptions {
-            custom_unit_amount_enabled: core::default::Default::default(),
-            custom_unit_amount_maximum: core::default::Default::default(),
-            custom_unit_amount_minimum: core::default::Default::default(),
-            custom_unit_amount_preset: core::default::Default::default(),
-            key: self.key,
-            tax_behavior: core::default::Default::default(),
-            unit_amount: core::default::Default::default(),
-            unit_amount_decimal: core::default::Default::default(),
-            tiers: core::default::Default::default(),
-            dynamic: core::default::Default::default(),
-        }
-    }
-}
-
-#[allow(dead_code)]
-pub struct Price_CurrencyOptionsRef {
-    shared: terrars::StackShared,
-    base: std::string::String,
-}
-
-impl terrars::Ref for Price_CurrencyOptionsRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_CurrencyOptionsRef {
-        Price_CurrencyOptionsRef {
-            shared: shared,
-            base: base.to_string(),
-        }
-    }
-}
-
-impl Price_CurrencyOptionsRef {
-    #[allow(dead_code)]
-    fn shared(&self) -> &terrars::StackShared {
-        &self.shared
-    }
-
-    #[doc = "Get a reference to the value of field `custom_unit_amount_enabled` after provisioning.\n"]
-    pub fn custom_unit_amount_enabled(&self) -> terrars::PrimExpr<bool> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_enabled", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `custom_unit_amount_maximum` after provisioning.\nThe maximum unit amount the customer can specify for this item."]
-    pub fn custom_unit_amount_maximum(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_maximum", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `custom_unit_amount_minimum` after provisioning.\nThe minimum unit amount the customer can specify for this item. Must be at least the minimum charge amount."]
-    pub fn custom_unit_amount_minimum(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_minimum", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `custom_unit_amount_preset` after provisioning.\nThe starting unit amount which can be updated by the customer."]
-    pub fn custom_unit_amount_preset(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_preset", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `key` after provisioning.\nKey for this field in parent map (synthetic to work around Terraform limitations)"]
-    pub fn key(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.key", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `tax_behavior` after provisioning.\nSpecifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed."]
-    pub fn tax_behavior(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.tax_behavior", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `unit_amount` after provisioning.\nThe unit amount in %s to be charged, represented as a whole integer if possible. Only set if `billing_scheme=per_unit`."]
-    pub fn unit_amount(&self) -> terrars::PrimExpr<f64> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount", self.base))
-    }
-
-    #[doc =
-        "Get a reference to the value of field `unit_amount_decimal` after provisioning.\nThe unit amount in %s to be charged, represented as a decimal string with at most 12 decimal places. Only set if `billing_scheme=per_unit`."]
-    pub fn unit_amount_decimal(&self) -> terrars::PrimExpr<std::string::String> {
-        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount_decimal", self.base))
-    }
-
-    #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
-    pub fn tiers(&self) -> terrars::ListRef<Price_CurrencyOptions_TiersRef> {
-        terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
-    }
+struct PriceDynamic {
+    currency_options: std::option::Option<terrars::DynamicBlock<Price_CurrencyOptions>>,
+    tiers: std::option::Option<terrars::DynamicBlock<Price_Tiers>>,
 }
 
 #[derive(Serialize)]
@@ -1359,7 +1034,202 @@ impl Price_TiersRef {
 }
 
 #[derive(Serialize, Default)]
-struct PriceDynamic {
-    currency_options: std::option::Option<terrars::DynamicBlock<Price_CurrencyOptions>>,
+struct Price_CurrencyOptionsDynamic {
     tiers: std::option::Option<terrars::DynamicBlock<Price_Tiers>>,
+}
+
+#[derive(Serialize)]
+pub struct Price_CurrencyOptions {
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    custom_unit_amount_enabled: std::option::Option<terrars::PrimField<bool>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    custom_unit_amount_maximum: std::option::Option<terrars::PrimField<f64>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    custom_unit_amount_minimum: std::option::Option<terrars::PrimField<f64>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    custom_unit_amount_preset: std::option::Option<terrars::PrimField<f64>>,
+    key: terrars::PrimField<std::string::String>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    tax_behavior: std::option::Option<terrars::PrimField<std::string::String>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    unit_amount: std::option::Option<terrars::PrimField<f64>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    unit_amount_decimal: std::option::Option<terrars::PrimField<std::string::String>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    tiers: std::option::Option<std::vec::Vec<Price_Tiers>>,
+    dynamic: Price_CurrencyOptionsDynamic,
+}
+
+impl Price_CurrencyOptions {
+    #[doc = "Set the field `custom_unit_amount_enabled`.\n"]
+    pub fn set_custom_unit_amount_enabled(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
+        self.custom_unit_amount_enabled = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `custom_unit_amount_maximum`.\nThe maximum unit amount the customer can specify for this item."]
+    pub fn set_custom_unit_amount_maximum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.custom_unit_amount_maximum = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `custom_unit_amount_minimum`.\nThe minimum unit amount the customer can specify for this item. Must be at least the minimum charge amount."]
+    pub fn set_custom_unit_amount_minimum(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.custom_unit_amount_minimum = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `custom_unit_amount_preset`.\nThe starting unit amount which can be updated by the customer."]
+    pub fn set_custom_unit_amount_preset(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.custom_unit_amount_preset = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `tax_behavior`.\nSpecifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed."]
+    pub fn set_tax_behavior(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
+        self.tax_behavior = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `unit_amount`.\nThe unit amount in %s to be charged, represented as a whole integer if possible. Only set if `billing_scheme=per_unit`."]
+    pub fn set_unit_amount(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.unit_amount = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc =
+        "Set the field `unit_amount_decimal`.\nThe unit amount in %s to be charged, represented as a decimal string with at most 12 decimal places. Only set if `billing_scheme=per_unit`."]
+    pub fn set_unit_amount_decimal(
+        mut self,
+        v: impl std::convert::Into<terrars::PrimField<std::string::String>>,
+    ) -> Self {
+        self.unit_amount_decimal = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc = "Set the field `tiers`.\n"]
+    pub fn set_tiers(mut self, v: impl std::convert::Into<terrars::BlockAssignable<Price_Tiers>>) -> Self {
+        match v.into() {
+            terrars::BlockAssignable::Literal(v) => {
+                self.tiers = std::option::Option::Some(v);
+            },
+            terrars::BlockAssignable::Dynamic(d) => {
+                self.dynamic.tiers = std::option::Option::Some(d);
+            },
+        }
+        self
+    }
+}
+
+impl terrars::ToListMappable for Price_CurrencyOptions {
+    type O = terrars::BlockAssignable<Price_CurrencyOptions>;
+
+    fn do_map(self, base: std::string::String) -> Self::O {
+        terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
+            for_each: format!("${{{}}}", base),
+            iterator: "each".into(),
+            content: self,
+        })
+    }
+}
+
+pub struct BuildPrice_CurrencyOptions {
+    #[doc = "Key for this field in parent map (synthetic to work around Terraform limitations)"]
+    pub key: terrars::PrimField<std::string::String>,
+}
+
+impl BuildPrice_CurrencyOptions {
+    pub fn build(self) -> Price_CurrencyOptions {
+        Price_CurrencyOptions {
+            custom_unit_amount_enabled: core::default::Default::default(),
+            custom_unit_amount_maximum: core::default::Default::default(),
+            custom_unit_amount_minimum: core::default::Default::default(),
+            custom_unit_amount_preset: core::default::Default::default(),
+            key: self.key,
+            tax_behavior: core::default::Default::default(),
+            unit_amount: core::default::Default::default(),
+            unit_amount_decimal: core::default::Default::default(),
+            tiers: core::default::Default::default(),
+            dynamic: core::default::Default::default(),
+        }
+    }
+}
+
+#[allow(dead_code)]
+pub struct Price_CurrencyOptionsRef {
+    shared: terrars::StackShared,
+    base: std::string::String,
+}
+
+impl terrars::Ref for Price_CurrencyOptionsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Price_CurrencyOptionsRef {
+        Price_CurrencyOptionsRef {
+            shared: shared,
+            base: base.to_string(),
+        }
+    }
+}
+
+impl Price_CurrencyOptionsRef {
+    #[allow(dead_code)]
+    fn shared(&self) -> &terrars::StackShared {
+        &self.shared
+    }
+
+    #[doc = "Get a reference to the value of field `custom_unit_amount_enabled` after provisioning.\n"]
+    pub fn custom_unit_amount_enabled(&self) -> terrars::PrimExpr<bool> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_enabled", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `custom_unit_amount_maximum` after provisioning.\nThe maximum unit amount the customer can specify for this item."]
+    pub fn custom_unit_amount_maximum(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_maximum", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `custom_unit_amount_minimum` after provisioning.\nThe minimum unit amount the customer can specify for this item. Must be at least the minimum charge amount."]
+    pub fn custom_unit_amount_minimum(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_minimum", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `custom_unit_amount_preset` after provisioning.\nThe starting unit amount which can be updated by the customer."]
+    pub fn custom_unit_amount_preset(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.custom_unit_amount_preset", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `key` after provisioning.\nKey for this field in parent map (synthetic to work around Terraform limitations)"]
+    pub fn key(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.key", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `tax_behavior` after provisioning.\nSpecifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed."]
+    pub fn tax_behavior(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.tax_behavior", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `unit_amount` after provisioning.\nThe unit amount in %s to be charged, represented as a whole integer if possible. Only set if `billing_scheme=per_unit`."]
+    pub fn unit_amount(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `unit_amount_decimal` after provisioning.\nThe unit amount in %s to be charged, represented as a decimal string with at most 12 decimal places. Only set if `billing_scheme=per_unit`."]
+    pub fn unit_amount_decimal(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.unit_amount_decimal", self.base))
+    }
+
+    #[doc = "Get a reference to the value of field `tiers` after provisioning.\n"]
+    pub fn tiers(&self) -> terrars::ListRef<Price_TiersRef> {
+        terrars::ListRef::new(self.shared().clone(), format!("{}.tiers", self.base))
+    }
 }

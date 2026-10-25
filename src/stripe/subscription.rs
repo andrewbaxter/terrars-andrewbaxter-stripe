@@ -2211,6 +2211,12 @@ impl SubscriptionRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct SubscriptionDynamic {
+    add_invoice_items: std::option::Option<terrars::DynamicBlock<Subscription_AddInvoiceItems>>,
+    items: std::option::Option<terrars::DynamicBlock<Subscription_Items>>,
+}
+
 #[derive(Serialize)]
 pub struct Subscription_DiscountCouponCurrencyOptions {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -3979,10 +3985,4 @@ impl Subscription_ItemsRef {
     pub fn tax_rates(&self) -> terrars::ListRef<terrars::PrimExpr<std::string::String>> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.tax_rates", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct SubscriptionDynamic {
-    add_invoice_items: std::option::Option<terrars::DynamicBlock<Subscription_AddInvoiceItems>>,
-    items: std::option::Option<terrars::DynamicBlock<Subscription_Items>>,
 }

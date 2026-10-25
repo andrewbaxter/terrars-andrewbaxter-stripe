@@ -506,6 +506,11 @@ impl CouponRef {
     }
 }
 
+#[derive(Serialize, Default)]
+struct CouponDynamic {
+    currency_options: std::option::Option<terrars::DynamicBlock<Coupon_CurrencyOptions>>,
+}
+
 #[derive(Serialize)]
 pub struct Coupon_CurrencyOptions {
     amount_off: terrars::PrimField<f64>,
@@ -575,9 +580,4 @@ impl Coupon_CurrencyOptionsRef {
     pub fn key(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.key", self.base))
     }
-}
-
-#[derive(Serialize, Default)]
-struct CouponDynamic {
-    currency_options: std::option::Option<terrars::DynamicBlock<Coupon_CurrencyOptions>>,
 }
